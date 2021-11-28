@@ -4,6 +4,6 @@ CREATE TABLE messages (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
   content TEXT,
-  is_for_admin BOOLEAN DEFAULT FALSE
+  is_for_admin BOOLEAN DEFAULT FALSE,
   timestamp TIMESTAMP
-);
+)
