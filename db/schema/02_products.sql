@@ -5,12 +5,13 @@ seller_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
 name VARCHAR(255) NOT NULL,
 brand VARCHAR(255) NOT NULL,
 price DECIMAL(6,2),
-screen_size INTEGER,
+screen_size DECIMAL(5,2),
 color VARCHAR(255),
 operating_system VARCHAR(255),
-hard_drive_capacity INTEGER,
-RAM INTEGER,
+hard_drive_capacity VARCHAR(255),
+RAM VARCHAR(255),
 is_available BOOLEAN DEFAULT TRUE,
 is_featured BOOLEAN DEFAULT TRUE,
-description VARCHAR(255)
+description VARCHAR(255),
+image_url VARCHAR(255)
 )
