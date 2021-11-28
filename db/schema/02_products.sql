@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS products CASCADE;
+CREATE TABLE products (
+id SERIAL PRIMARY KEY NOT NULL,
+seller_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+name VARCHAR(255) NOT NULL,
+brand VARCHAR(255) NOT NULL,
+price DECIMAL(6,2),
+screen_size INTEGER,
+color VARCHAR(255),
+operating_system VARCHAR(255),
+hard_drive_capacity INTEGER,
+RAM INTEGER,
+is_available BOOLEAN DEFAULT TRUE,
+is_featured BOOLEAN DEFAULT TRUE,
+description VARCHAR(255)
+)
