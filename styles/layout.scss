@@ -12,14 +12,12 @@ div.nav {
   background-color: blue;
   align-items: center;
   color: white;
-
 }
 
 div.nav-left {
   display: flex;
   flex-direction: row;
   margin-left: 1em;
-
 }
 
 div.nav-right {
@@ -41,5 +39,16 @@ div.footer {
 
 .nav-item-nav-link {
   color: white;
-  padding-right: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#login-form, #registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
+  padding-right: 10px;
 }

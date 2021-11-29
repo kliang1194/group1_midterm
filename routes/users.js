@@ -55,7 +55,7 @@ router.post("/login", (req, res) => {
         req.session.is_admin = user.is_admin;
         res.redirect("/login");
       } else {
-        res.send("Your login information does not match our records");
+        res.send("Your login information does not match our records. Please try again.");
       }
     })
     .catch((err) => {

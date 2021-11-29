@@ -15,18 +15,20 @@
 <body>
   <%- include('partials/header') %>
 
-<main style="margin: 1em;">
+<main style="margin: 1em;" id="login-form">
       <h3>Login to Your Existing Account</h3>
       <form method="POST" action="/login" class="user-login">
-        <div class="email-login">
-      <label for="email">E-mail Address:</label>
+        <div class="login-form">
+      <label for="email" class="login-label">E-mail Address:</label>
       <input class="form-control" id="email" type="email" name="email" placeholder="eg. example@gmail.com" style="width: 300px; margin: 1em" class="form-control"/>
         </div>
-        <div class="password-login">
-          <label for="password">Password:</label>
+        <div class="login-form">
+          <label for="password" class="login-label">Password:</label>
           <input class="form-control" id="password" type="password" name="password" placeholder="Enter Password" style="width: 300px; margin: 1em" class="form-control"/>
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div class="login-button">
+        <button type="submit" class="btn btn-primary">Login</button>
+        </div>
     </form>
 </main>
 

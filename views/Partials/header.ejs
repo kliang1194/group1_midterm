@@ -14,6 +14,7 @@
     <% if (user_email && !is_admin) { %>
       <div class="nav">
         <div class="nav-left">
+          <h5 id="logo">Laptop Station</h5>
         <a class="nav-item-nav-link" href="/">Home</a>
         <a class="nav-item-nav-link" href="/products">Our Products</a>
         <a class="nav-item-nav-link" href="/favorites">Favorites</a>
@@ -23,12 +24,13 @@
         <div class="nav-right">
       <form method="POST" action="/logout" class="form-inline">
         <a class="logged-in-as" style="margin: 1em">Logged In As User: <%= user_email %></a>
-        <button type="submit" class="btn btn-primary" style="margin-right: 1em">Logout</button>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px">Logout</button>
       </form>
     </div>
       <% } else if (user_email && is_admin) { %>
         <div class="nav">
           <div class="nav-left">
+            <h5 id="logo">Laptop Station</h5>
           <a class="nav-item-nav-link" href="/">Home</a>
           <a class="nav-item-nav-link" href="/products">Our Products</a>
           <a class="nav-item-nav-link" href="/newProduct">Create Post</a>
@@ -37,18 +39,19 @@
           <div class="nav-right">
         <form method="POST" action="/logout" class="form-inline">
           <a class="logged-in-as" style="margin: 1em">Logged In As Admin: <%= user_email %></a>
-          <button type="submit" class="btn btn-primary" style="margin-right: 1em">Logout</button>
+          <button type="submit" class="btn btn-primary" style="margin-right: 10px">Logout</button>
         </form>
       </div>
       <% } else { %>
       <div class="nav">
         <div class="nav-left">
+          <h5 id="logo">Laptop Station</h5>
         <a class="nav-item-nav-link" href="/">Home</a>
         <a class="nav-item-nav-link" href="/products">Our Products</a>
       </div>
       <div class="nav-right">
         <a class="nav-item-nav-link" href="/register">Register</a>
-        <a class="nav-item-nav-link" href="/login">Login</a>
+        <a class="nav-item-nav-link" href="/login" style="margin-right: 10px">Login</a>
     </div>
       </div>
     <% } %>
