@@ -1,6 +1,54 @@
-// See: https://sass-lang.com/
-
 body,
 html {
   margin: 0;
+}
+
+div.nav {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: blue;
+  align-items: center;
+  color: white;
+}
+
+div.nav-left {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1em;
+}
+
+div.nav-right {
+  display: flex;
+  flex-direction: row;
+}
+
+div.footer {
+  display: flex;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: blue;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.nav-item-nav-link {
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#login-form, #registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
+  padding-right: 10px;
 }

@@ -36,6 +36,13 @@ app.use(
 );
 
 app.use(express.static("public"));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
+app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
