@@ -5,5 +5,5 @@ CREATE TABLE messages (
   product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
   content TEXT,
   is_for_admin BOOLEAN DEFAULT FALSE,
-  timestamp TIMESTAMP
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )

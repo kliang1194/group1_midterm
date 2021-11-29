@@ -48,11 +48,13 @@ app.use(cookieParser());
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const productsRoutes = require("./routes/products");
-
+const messagesRoutes = require("./routes/messages");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/", usersRoutes(db));
 app.use("/products", productsRoutes(db));
+app.use("/", messagesRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page

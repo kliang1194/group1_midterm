@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <title>Messages</title>
+
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <section class="messages-container">
+    <div class="messages-received">
+      <h3>Received From:</h3>
+    </div>
+  </section>
+
+<main style="margin: 1em;" id="login-form">
+      <h3>Login to Your Existing Account</h3>
+      <form method="POST" action="/login" class="user-login">
+        <div class="login-form">
+      <label for="email" class="login-label">E-mail Address:</label>
+      <input class="form-control" id="email" type="email" name="email" placeholder="eg. example@gmail.com" style="width: 300px; margin: 1em" class="form-control"/>
+        </div>
+        <div class="login-form">
+          <label for="password" class="login-label">Password:</label>
+          <input class="form-control" id="password" type="password" name="password" placeholder="Enter Password" style="width: 300px; margin: 1em" class="form-control"/>
+        </div>
+        <div class="login-button">
+        <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</main>
+
+<%- include('partials/footer') %>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+
+
+</html>

@@ -26,7 +26,6 @@ module.exports = (db) => {
 router.get("/login", (req, res) => {
   const user_email = req.session.user_email;
   const is_admin = req.session.is_admin;
-  console.log("is_admin:", is_admin)
   const value = [user_email];
   const sqlQuery = `SELECT * FROM users WHERE email = $1;`
   db.query(sqlQuery, value)
