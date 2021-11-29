@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<header>
+
+  <nav class="header-main">
+    <% if (user_email && !is_admin) { %>
+      <div class="nav">
+        <div class="nav-left">
+        <a class="nav-item-nav-link" href="/">Home</a>
+        <a class="nav-item-nav-link" href="/products">Our Products</a>
+        <a class="nav-item-nav-link" href="/favorites">Favorites</a>
+        <a class="nav-item-nav-link" href="/newProduct">Create Post</a>
+        <a class="nav-item-nav-link" href="/messages">Messages</a>
+        </div>
+        <div class="nav-right">
+      <form method="POST" action="/logout" class="form-inline">
+        <a class="logged-in-as" style="margin: 1em">Logged In As User: <%= user_email %></a>
+        <button type="submit" class="btn btn-primary" style="margin-right: 1em">Logout</button>
+      </form>
+    </div>
+      <% } else if (user_email && is_admin) { %>
+        <div class="nav">
+          <div class="nav-left">
+          <a class="nav-item-nav-link" href="/">Home</a>
+          <a class="nav-item-nav-link" href="/products">Our Products</a>
+          <a class="nav-item-nav-link" href="/newProduct">Create Post</a>
+          <a class="nav-item-nav-link" href="/messages">Messages</a>
+          </div>
+          <div class="nav-right">
+        <form method="POST" action="/logout" class="form-inline">
+          <a class="logged-in-as" style="margin: 1em">Logged In As Admin: <%= user_email %></a>
+          <button type="submit" class="btn btn-primary" style="margin-right: 1em">Logout</button>
+        </form>
+      </div>
+      <% } else { %>
+      <div class="nav">
+        <div class="nav-left">
+        <a class="nav-item-nav-link" href="/">Home</a>
+        <a class="nav-item-nav-link" href="/products">Our Products</a>
+      </div>
+      <div class="nav-right">
+        <a class="nav-item-nav-link" href="/register">Register</a>
+        <a class="nav-item-nav-link" href="/login">Login</a>
+    </div>
+      </div>
+    <% } %>
+  </nav>
+</header>
+
+</html>
