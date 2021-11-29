@@ -18,9 +18,9 @@
   <%- include('partials/header') %>
 
   <section class=new-message>
-    <h1>New Message to Admin</h1>
+    <h1 class="new-message">New Message to Admin</h1>
     <div class="message-container">
-      <form action="/adminMessage" method="POST">
+      <form action="/adminMessage" method="POST" class="admin-message">
         <input type="hidden" id="user_id" name="user_id" value=2>
         <input type="hidden" id="is_admin" name="is_admin" value=true >
         <label for="Message">Create New Message</label>
@@ -28,7 +28,6 @@
         <input type="submit" value="Submit">
       </form>
         </div>
-    </div>
   </section>
 
 <%- include('partials/footer') %>

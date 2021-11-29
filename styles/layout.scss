@@ -52,3 +52,28 @@ div.footer {
 #logo {
   padding-right: 10px;
 }
+
+section.new-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+div.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form.new-message, form.admin-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+h1.new-message {
+  padding: 20px;
+}

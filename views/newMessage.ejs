@@ -17,23 +17,30 @@
 <body>
   <%- include('partials/header') %>
 
-  <section class=new-message>
-    <h1>New Message</h1>
+  <section class="new-message">
+    <h1 class="new-message">Create New Message</h1>
     <div class="message-container">
       <div class="seller_name">
       <label for="seller_name" class="seller_name">Seller Name:</label>
       </div>
-      <form action="/newMessage" method="POST">
-        <label for="product_id">Product Id: (render product id here)</label>
+
+      <form action="/newMessage" method="POST" class="new-message">
+
+        <label for="product_id">Product ID: (Render Product ID Here)</label>
         <input type="hidden" id="product_id" name="product_id" value=1>
+
         <input type="hidden" id="user_id" name="user_id" value=2>
+
         <input type="hidden" id="is_admin" name="is_admin" value=false >
+
         <label for="Message">Create New Message</label>
         <input type="text" id="message" name="message">
+
         <input type="submit" value="Submit">
+
       </form>
-        </div>
-    </div>
+
+  </div>
   </section>
 
 <%- include('partials/footer') %>
