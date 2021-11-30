@@ -1,8 +1,12 @@
+html {
+  margin: 0;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-height: 100vh;
+  margin: 0;
 
   background: rgb(163, 208, 219);
   background: linear-gradient(
@@ -14,4 +18,40 @@ body {
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+#products-container {
+  margin: 1em 12em 5em 12em;
+}
+
+.product {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em 8em;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 2;
+}
+
+.description-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-section p {
+  justify-content: center;
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-between;
 }

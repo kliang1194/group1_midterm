@@ -35,7 +35,10 @@ app.use(
   })
 );
 
-app.use(express.static("public"));
+// Serve all the files under public directory
+app.use(express.static('public'));
+app.use('/public', express.static('public'));
+
 app.use(
   cookieSession({
     name: "session",
@@ -49,12 +52,15 @@ app.use(cookieParser());
 const usersRoutes = require("./routes/users");
 const productsRoutes = require("./routes/products");
 const messagesRoutes = require("./routes/messages");
+const adminRoutes = require("./routes/admin");
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/", usersRoutes(db));
 app.use("/products", productsRoutes(db));
 app.use("/", messagesRoutes(db));
 
+app.use("/admin", adminRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
