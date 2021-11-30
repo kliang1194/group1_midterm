@@ -65,6 +65,9 @@ div.message-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 300px;
+  justify-content: center;
+  width: 100%;
 }
 
 form.new-message, form.admin-message {
@@ -72,8 +75,25 @@ form.new-message, form.admin-message {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 75%;
+}
+
+div.create-message {
+  display: flex;
+  flex-direction: column;
 }
 
 h1.new-message {
   padding: 20px;
+}
+
+#message {
+  width: 100%;
+  height: 200px;
+}
+
+#submit-message {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%
 }
