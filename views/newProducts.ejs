@@ -21,7 +21,20 @@
 
     <main style="margin: 1em" id="newProducts-form">
       <h3>Create Product</h3>
+
       <form method="POST" action="/newProducts" class="new-products">
+            <div class="image-url">
+          <label for="image">Product Image:</label>
+          <input
+            class="form-control"
+            id="image-url"
+            type="text"
+            name="image-url"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
         <div class="name-products">
           <label for="name">Name:</label>
           <input
@@ -51,7 +64,7 @@
           <input
             class="form-control"
             id="screen-size"
-            type="text"
+            type="number"
             name="screen-size"
             placeholder=""
             style="width: 300px; margin: 1em"
@@ -129,7 +142,7 @@
           <input
             class="form-control"
             id="price"
-            type="text"
+            type="number"
             name="price"
             placeholder=""
             style="width: 300px; margin: 1em"
