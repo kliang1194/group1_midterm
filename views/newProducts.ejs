@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <title>Register</title>
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <main style="margin: 1em" id="newProducts-form">
+      <h3>Create Product</h3>
+      <form method="POST" action="/newProducts" class="new-products">
+        <div class="name-products">
+          <label for="name">Name:</label>
+          <input
+            class="form-control"
+            id="name"
+            type="text"
+            name="name"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+        <div class="brand">
+          <label for="brand">Brand:</label>
+          <input
+            class="form-control"
+            id="brand"
+            type="text"
+            name="brand"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+        <div class="screen-size">
+          <label for="screen-size">Screen Size:</label>
+          <input
+            class="form-control"
+            id="screen-size"
+            type="text"
+            name="screen-size"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="colour">
+          <label for="colour">Colour:</label>
+          <input
+            class="form-control"
+            id="colour"
+            type="text"
+            name="colour"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="operating-system">
+          <label for="operating-system">Operating System:</label>
+          <input
+            class="form-control"
+            id="operating-system"
+            type="text"
+            name="operating-system"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="processor-type">
+          <label for="processor-type">Processor Type:</label>
+          <input
+            class="form-control"
+            id="processor-type"
+            type="text"
+            name="processor-type"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="hard-drive-capacity">
+          <label for="hard-drive-capacity">Hard Drive Capacity:</label>
+          <input
+            class="form-control"
+            id="hard-drive-capacity"
+            type="text"
+            name="hard-drive-capacity"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="RAM">
+          <label for="RAM">RAM:</label>
+          <input
+            class="form-control"
+            id="RAM"
+            type="text"
+            name="RAM"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="price">
+          <label for="price">Price:</label>
+          <input
+            class="form-control"
+            id="price"
+            type="text"
+            name="price"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <div class="description">
+          <label for="description">Description:</label>
+          <input
+            class="form-control"
+            id="description"
+            type="text"
+            name="description"
+            placeholder=""
+            style="width: 300px; margin: 1em"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Product</button>
+      </form>
+    </main>
+
+    <!-- <%- include('partials/footer') %> -->
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
