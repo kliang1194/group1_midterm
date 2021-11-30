@@ -21,30 +21,14 @@
 
     <main style="margin: 1em" id="productPage-form">
       <h3>Description</h3>
-      <form method="POST" action="/productPage" class="product-page">
         <div class="name-products">
           <label for="name">Name:</label>
-          <input
-            class="form-control"
-            id="name"
-            type="text"
-            name="name"
-            placeholder=""
-            style="width: 300px; margin: 1em"
-            class="form-control"
-          />
-        </div>
-        <div class="brand">
-          <label for="brand">Brand:</label>
-          <input
-            class="form-control"
-            id="brand"
-            type="text"
-            name="brand"
-            placeholder=""
-            style="width: 300px; margin: 1em"
-            class="form-control"
-          />
+          <p><%= product["name"]%></p>
+          <p><%= product["brand"]%></p>
+          <p><%= product["price"]%></p>
+          <p><%= product["color"]%></p>
+          <p><%= product["ram"]%></p>
+          <p><%= product["ram"]%></p>
         </div>
 
 

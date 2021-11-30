@@ -22,7 +22,7 @@
     <main style="margin: 1em" id="newProducts-form">
       <h3>Create Product</h3>
 
-      <form method="POST" action="/newProducts" class="new-products">
+      <form method="POST" action="/products/newProducts" class="new-products">
             <div class="image-url">
           <label for="image">Product Image:</label>
           <input
@@ -63,22 +63,22 @@
           <label for="screen-size">Screen Size:</label>
           <input
             class="form-control"
-            id="screen-size"
-            type="number"
-            name="screen-size"
+            id="screen_size"
+            type="text"
+            name="screen_size"
             placeholder=""
             style="width: 300px; margin: 1em"
             class="form-control"
           />
         </div>
 
-        <div class="colour">
-          <label for="colour">Colour:</label>
+        <div class="color">
+          <label for="color">Color:</label>
           <input
             class="form-control"
-            id="colour"
+            id="color"
             type="text"
-            name="colour"
+            name="color"
             placeholder=""
             style="width: 300px; margin: 1em"
             class="form-control"
@@ -89,35 +89,24 @@
           <label for="operating-system">Operating System:</label>
           <input
             class="form-control"
-            id="operating-system"
+            id="operating_system"
             type="text"
-            name="operating-system"
+            name="operating_system"
             placeholder=""
             style="width: 300px; margin: 1em"
             class="form-control"
           />
         </div>
 
-        <div class="processor-type">
-          <label for="processor-type">Processor Type:</label>
-          <input
-            class="form-control"
-            id="processor-type"
-            type="text"
-            name="processor-type"
-            placeholder=""
-            style="width: 300px; margin: 1em"
-            class="form-control"
-          />
-        </div>
+
 
         <div class="hard-drive-capacity">
           <label for="hard-drive-capacity">Hard Drive Capacity:</label>
           <input
             class="form-control"
-            id="hard-drive-capacity"
+            id="hard_drive_capacity"
             type="text"
-            name="hard-drive-capacity"
+            name="hard_drive_capacity"
             placeholder=""
             style="width: 300px; margin: 1em"
             class="form-control"
