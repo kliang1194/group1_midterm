@@ -53,6 +53,7 @@ router.post("/login", (req, res) => {
         req.session.user_email = user.email;
         console.log("data.rows[0]:", data.rows[0])
         req.session.is_admin = user.is_admin;
+        req.session.user_id = user.id;                  // Added user.id within cookie as well for better data carry over
         res.redirect("/login");
       } else {
         res.send("Your login information does not match our records. Please try again.");

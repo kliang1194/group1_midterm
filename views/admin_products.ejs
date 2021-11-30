@@ -6,8 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/products.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
@@ -42,14 +40,14 @@
           <p><%= product['description'] %></p>
         </div>
         <div class="button-section">
-          <form method="GET" action="/products/<%= product['id'] %>">
-            <button type="submit" class="btn btn-primary">More Info</button>
+          <form method="GET" action="admin/products/<%= product['id'] %>">
+            <button type="submit" class="btn btn-primary">Edit</button>
           </form>
-          <form method="POST" action="/products/<%= product['id'] %>/<%= user_id %>/newFavorite">
-            <button type="submit" class="btn btn-primary">Favorite This</button>
+          <form method="POST" action="admin/products/<%= product['id'] %>/delete">
+            <button type="submit" class="btn btn-primary">Delete</button>
           </form>
-          <form method="GET" action="/products/<%= product['id'] %>/messages">
-            <button type="submit" class="btn btn-primary">Contact Seller</button>
+          <form method="GET" action="admin/products/<%= product['id'] %>/sold">
+            <button type="submit" class="btn btn-primary">Mark Sold</button>
           </form>
         </div>
       </div>
