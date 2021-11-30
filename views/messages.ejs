@@ -34,10 +34,10 @@
             <%  conversation.push(message.sender_id); %>
             <% } %>
             <% } %>
-              <% conversation.map((each)=>{ %>
-                <form action="/message/<%= each %>" method="GET" >
+              <% conversation.map((sender_id)=>{ %>
+                <form action="/messages/<%=sender_id%>" method="GET" >
                 <button>
-                <%= each %>
+                <%= sender_id %>
                 </button>
               </form>
               <% }); %>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  <title>Messages</title>
+
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <section class=new-message>
+    <h1 class="new-message">Conversation with User <%= sender_id %></h1>
+
+   <% if (user_email && is_admin) %>
+    <div class=message-history">
+    <% for (let message of messages) { %>
+      <div>
+        <p>From <%= message["sender_id"]%> to <%= message["receiver_id"]%></p>
+        <%= message["content"] %>
+        <%= message["timestamp"] %>
+      </div>
+    <% } %>
+    </div>
+
+    <div class="message-container">
+      <form action="/messages/<%= sender_id%>" method="POST" class="admin-respond-user">
+        <input type="hidden" id="sender_id" name="sender_id" value=<%=user_id%>>
+        <input type="hidden" id="receiver_id" name="receiver_id" value=<%= sender_id %>>
+        <input type="hidden" id="is_admin" name="is_admin" value=true>
+        <label for="Message"><strong>Create New Message</strong></label>
+        <textarea name="text" id="message" name="message" style="margin-bottom: 10px"></textarea>
+        <div id="submit-message">
+        <input type="submit" value="Submit">
+        </div>
+      </form>
+        </div>
+  </section>
+
+<%- include('partials/footer') %>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+
+
+</html>
