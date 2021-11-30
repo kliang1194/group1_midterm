@@ -52,9 +52,34 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/products/:product_id/sold", (req, res) => {
+    const is_admin = req.session.is_admin;
+    const product_id = req.params.product_id;
 
-  
-    
-   
+    if(!is_admin) {
+      return res.status(401).send("No authorization for admin functionality! (Admin Delete function)");
+    };
+
+    if(!product_id) {
+      return res.status(400).send("Product_id does not exist! (Admin Sold function)");
+    };
+
+    const sold_url = 'https://i.imgur.com/bnNBGDN.jpg';
+    const value = [sold_url, false, product_id];
+    db.query(`UPDATE products
+              SET image_url = $1, is_available = $2
+              WHERE id = $3;`, value)
+      .then(data => {
+        const product = data.rows[0];
+        console.log("Item mark as SOLD, product: ", product);
+        return res.redirect('/products');
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };

@@ -46,7 +46,7 @@
           <form id="delete-button" method="POST" action="products/<%= product['id'] %>/delete" onsubmit="return confirm('Are you sure you want to delete this item?');">
             <button type="submit" class="btn btn-primary">Delete</button>
           </form>
-          <form method="GET" action="products/<%= product['id'] %>/sold">
+          <form id="sold-button" method="POST" action="products/<%= product['id'] %>/sold" onsubmit="return confirm('Mark this item as sold?');">
             <button type="submit" class="btn btn-primary">Mark Sold</button>
           </form>
         </div>
