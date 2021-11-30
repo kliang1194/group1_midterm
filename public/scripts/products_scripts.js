@@ -10,39 +10,39 @@ $(document).ready(function() {
   // Helper function that renders a single product
   const renderProduct = function(product) {
     const $product = createProductElement(product);         // calls createProductElement for each product
-    $('#products-container').prepend($product);             // takes return value and appends it to the tweets container
-    $("p.tw").first().text(tweet.content.text);             // Escape text to prevent XSS
+    $('#products-container').append($product);             // takes return value and appends it to the tweets container
   };
 
-    /* Takes in tweet object and return a tweet <article> element */
+    /* Takes in product object and return a product <article> element */
     const createProductElement = function(product) {
-      const $tweet = $(`
+      const $product = $(`
       <article class="product">
-        <header>
-          <div>
-            <img src="${tweet.user.avatars}" alt="avatar.png">
-            ${tweet.user.name}
-          </div>
-          ${tweet.user.handle}
-        </header>
-        <div class="tweet-content">
-          <p class="tw"></p>
+        <div class="image-content">
+          <img src="${product.image_url}" width="300" height="300">
         </div>
-        <footer>
-          <p>${timeago.format(tweet.created_at)}</p>
-          <div>
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
+
+        <div class="product-content">
+          <div class="description-section">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
           </div>
-        </footer>
-      </article>`);
-      return $tweet;
+
+          <div class="link-section">
+            <form method="GET" action="/products/<%= product_id %>">
+              <button type="submit" class="btn btn-primary">EDIT</button>
+            </form>
+            <a class="nav-item-nav-link" href="/products/${product.id}/:user_id/newFavorite">Favourite This</a>
+            <a class="nav-item-nav-link" href="/messages/${product.seller_id}">Contact Seller</a>
+          </div>
+        </div>
+      </article>
+      `);
+      return $product;
     };
 
   const loadProducts = function() {
     $.ajax({
-      url: '/products',
+      url: '/products/json',
       method: 'GET',
       dataType: 'json',
       success: (data) => {
@@ -55,5 +55,6 @@ $(document).ready(function() {
     });
   };
 
-
+  // Test / driver code
+  loadProducts();
 });
