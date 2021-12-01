@@ -28,9 +28,7 @@ module.exports = (db) => {
     const is_admin = req.session.is_admin;
     const current_user_id = req.session.user_id;
     const user_id = req.params.user_id;
-
-    console.log(current_user_id);
-    console.log(user_id);
+    const product_id = req.params.product_id;
 
     if(current_user_id.toString() !== user_id) {
       return res.status(400).send("Invalid Favorite request! (User Favorite function)");
@@ -40,10 +38,9 @@ module.exports = (db) => {
       return res.redirect('/admin/products');
     };
     
-    db.query(`SELECT * FROM products;`)
+    db.query(`INSERT INTO favorite_products (user_id, product_id) VALUES ($1, $2)`, [current_user_id, product_id])
       .then(data => {
-        // const products = data.rows;
-        // const templateVars = {is_admin, user_email, products, user_id};
+        return;
       })
       .catch(err => {
         res
@@ -52,6 +49,31 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/:product_id/:user_id/unFavorite", (req, res) => {
+    const is_admin = req.session.is_admin;
+    const current_user_id = req.session.user_id;
+    const user_id = req.params.user_id;
+    const product_id = req.params.product_id;
+
+    if(current_user_id.toString() !== user_id) {
+      return res.status(400).send("Invalid Favorite request! (User Favorite function)");
+    };
+
+    if(is_admin) {
+      return res.redirect('/admin/products');
+    };
+    
+    db.query(`DELETE FROM favorite_products
+              WHERE user_id = $1 AND product_id = $2;`, [current_user_id, product_id])
+      .then(data => {
+        return;
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
    
   return router;
 };

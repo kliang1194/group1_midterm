@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/products.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  
+
+  <!-- App JS -->
+  <!-- <script type="text/javascript" src="/scripts/products_scripts.js"></script> -->
+
+  <title>My Favorites</title>
+</head>
+
+<body>
+  <!-- Nav-header partial -->
+  <%- include('partials/header') %>
+
+  <header class='header'>
+    <h1>My Favorites</h1>
+  </header>
+
+  <main id='products-container'>
+    <% for(let product of favorite_products) { %>
+    <article class="product">
+      <div class="image-content">
+        <img src="<%= product['image_url'] %>" width="200" height="200">
+      </div>
+
+      <div class="product-content">
+        <div class="description-section">
+          <h3><%= product['name'] %></h3>
+          <p><%= product['description'] %></p>
+        </div>
+        <div class="button-section">
+          <form method="GET" action="/products/<%= product['id'] %>">
+            <button type="submit" class="btn btn-primary">More Info</button>
+          </form>
+          <%- include('partials/unfavorite', {product, product}) %>
+          <form method="GET" action="/products/<%= product['id'] %>/messages">
+            <button type="submit" class="btn btn-primary">Contact Seller</button>
+          </form>
+        </div>
+      </div>
+    </article>
+    <% } %>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
