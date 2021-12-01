@@ -6,13 +6,14 @@
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
 </head>
 
 <body>
   <nav class="footer-main">
     <% if (user_email && !is_admin) { %>
       <div class="footer">
-        <a class="footer-item footer-link" href="/adminMessage">Contact Admin</a>
+        <a class="footer-item-footer-link" href="/adminMessage">Contact Admin</a>
         </div>
       <% } else { %>
         <div class="footer">

@@ -20,7 +20,7 @@
   <%- include('partials/header') %>
 
     <section class=new-message>
-      <h1 class="new-message">Conversation History with Admin</h1>
+      <h1 class="new-message"><strong>Conversation History with Admin</strong></h1>
 
      <% if (user_email && !is_admin) %>
       <div class="message-history">
@@ -28,7 +28,7 @@
         <div class="individual-message">
           <div class="sender-names">
             <div class="message-names">
-          <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+          <span>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></span>
           </div>
           </div>
           <div class="message-content">

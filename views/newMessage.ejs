@@ -20,19 +20,20 @@
   <%- include('partials/header') %>
 
   <section class="new-message">
-    <h1 class="new-message">Conversation History with <%= seller_name %></h1>
+    <h1 class="new-message"><strong>Conversation History with <%= seller_name %></strong></h1>
+    <% if (messages.length === 0) { %>
+      <div class="no-existing-messages">
+      <p>You do not currently have any messages with this seller. Please begin a new conversation with the seller about the product you are interested in.</p>
+     </div>
+      <% } %>
     <div class=message-history">
-      <% if (messages.length === 0) { %>
-        <div class="no-existing-messages">
-        <p>You do not currently have any messages with this seller. Please begin a new conversation with the seller about the product you are interested in.</p>
-       </div>
-        <% } %>
+
 
     <% for (let message of messages) { %>
       <div class="individual-message">
         <div class="sender-names">
           <div class="message-names">
-        <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+            <span>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></span>
         </div>
         </div>
         <div class="message-content">

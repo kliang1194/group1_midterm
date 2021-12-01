@@ -21,13 +21,13 @@
 
   <section class=new-message>
 
-   <h1 class="new-message">Conversation History with <%= user_name %></h1>
+   <h1 class="new-message"><strong>Conversation History with <%= user_name %></strong></h1>
     <div class=message-history">
     <% for (let message of messages) { %>
       <div class="individual-message">
         <div class="sender-names">
           <div class="message-names">
-        <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+        <span>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></span>
         </div>
         </div>
         <div class="message-content">

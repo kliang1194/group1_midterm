@@ -1,10 +1,27 @@
-body,
 html {
   margin: 0;
   padding-top: 40px;
   padding-bottom: 40px;
 }
 
+body {
+  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 100vh;
+  background: rgb(163, 208, 219);
+  background: linear-gradient(
+    227deg,
+    rgba(163, 208, 219, 1) 0%,
+    rgba(163, 176, 219, 1) 20%,
+    rgba(163, 173, 219, 1) 34%,
+    rgba(163, 219, 208, 1) 59%,
+    rgba(163, 208, 219, 1) 74%,
+    rgba(163, 208, 219, 1) 100%
+  );
+}
+
+//Header CSS//
 nav.header-main {
   position: fixed;
   z-index: 3;
@@ -18,7 +35,7 @@ div.nav {
   height: 60px;
   flex-direction: row;
   justify-content: space-between;
-  background-color: blue;
+  background-color: #28d;
   align-items: center;
   color: white;
 }
@@ -40,7 +57,7 @@ div.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: blue;
+  background-color: #28d;
   justify-content: flex-start;
   align-items: center;
   padding-left: 15px;
@@ -52,46 +69,13 @@ div.footer {
   padding-right: 10px;
 }
 
-#login-form, #registration-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #logo {
   padding-right: 10px;
 }
 
-section.new-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  justify-content: center;
-}
 
+//Footer css//
 
-
-form.new-message, form.admin-message {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 75%;
-}
-
-div.create-message {
-  display: flex;
-  flex-direction: column;
-}
-
-#message {
-  width: 100%;
-  height: 200px;
-}
-
-#submit-message {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
+.footer-item-footer-link {
+  color: white;
 }
