@@ -112,8 +112,7 @@ router.get("/messages/:sender_id", (req, res) => {
     const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
     res.render("respondUser", templateVars);
   })
-}
-if (user_email && !is_admin) {
+} else if (user_email && !is_admin) {
   const value = [sender_id, user_id];
   const sqlQuery = `
   SELECT m.*, us.name as sender_name, ur.name as receiver_name
@@ -124,14 +123,21 @@ if (user_email && !is_admin) {
   ORDER BY timestamp ASC;`
   db.query(sqlQuery, value)
   .then((data) => {
-    const user_name = data.rows[0].sender_name
+    const username = ""
+    if (data.rows[0].sender_id === user_id) {
+      user_name = data.rows[0].receiver_name;
+      const messages = data.rows;
+    const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
+    res.render("respondUser", templateVars);
+    }
+    if (data.rows[0].sender_id !== user_id)
+    user_name = data.rows[0].sender_name;
     const messages = data.rows;
-    console.log(messages);
     const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
     res.render("respondUser", templateVars);
   })
 }
-})
+});
 
 //render messages page to display all messages for the logged in user//
 router.get("/messages", (req, res) => {

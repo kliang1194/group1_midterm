@@ -19,9 +19,9 @@
   <%- include('partials/header') %>
 
   <section class=new-message>
-    <h1 class="new-message">Conversation History with <%= user_name %></h1>
 
-   <% if (user_email && is_admin) %>
+   <% if (user_email && is_admin) { %>
+   <h1 class="new-message">Conversation History with <%= user_name %></h1>
     <div class=message-history">
     <% for (let message of messages) { %>
       <div class="individual-message">
@@ -29,8 +29,21 @@
         <%= message["content"] %>
         <%= message["timestamp"] %>
       </div>
-    <% } %>
     </div>
+    <% } %>
+    <% } else if (user_email && !is_admin) {%>
+    <h1 class="new-message">Conversation History with <%= user_name %></h1>
+    <div class=message-history">
+      <% for (let message of messages) { %>
+        <div class="individual-message">
+          <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+          <%= message["content"] %>
+          <%= message["timestamp"] %>
+        </div>
+      </div>
+      <% } %>
+      <% } %>
+
 
     <div class="message-container">
       <form action="/messages/<%= sender_id%>" method="POST" class="admin-respond-user">
