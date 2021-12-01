@@ -51,6 +51,7 @@ app.use(cookieParser());
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const productsRoutes = require("./routes/products");
+const messagesRoutes = require("./routes/messages");
 const adminRoutes = require("./routes/admin");
 
 
@@ -58,6 +59,8 @@ const adminRoutes = require("./routes/admin");
 // Note: Feel free to replace the example routes below with your own
 app.use("/", usersRoutes(db));
 app.use("/products", productsRoutes(db));
+app.use("/", messagesRoutes(db));
+
 app.use("/admin", adminRoutes(db));
 // Note: mount other resources here, using the same pattern above
 

@@ -53,6 +53,47 @@ div.footer {
   padding-right: 10px;
 }
 
+section.new-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
 
+div.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  justify-content: center;
+  width: 100%;
+}
 
+form.new-message, form.admin-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 75%;
+}
 
+div.create-message {
+  display: flex;
+  flex-direction: column;
+}
+
+h1.new-message {
+  padding: 20px;
+}
+
+#message {
+  width: 100%;
+  height: 200px;
+}
+
+#submit-message {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%
+}
