@@ -8,30 +8,42 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <title>Login</title>
+
+  <title>Admin Message</title>
 
 </head>
 
 <body>
   <%- include('partials/header') %>
 
-<main style="margin: 1em;" id="login-form">
-      <h3>Login to Your Existing Account</h3>
-      <form method="POST" action="/login" class="user-login">
-        <div class="login-form">
-      <label for="email" class="login-label">E-mail Address:</label>
-      <input class="form-control" id="email" type="email" name="email" placeholder="eg. example@gmail.com" style="width: 300px; margin: 1em" class="form-control"/>
+    <section class=new-message>
+      <h1 class="new-message">Conversation History with Admin</h1>
+
+     <% if (user_email && !is_admin) %>
+      <div class=message-history">
+      <% for (let message of messages) { %>
+        <div class="individual-message">
+          <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+          <%= message["content"] %>
+          <%= message["timestamp"] %>
         </div>
-        <div class="login-form">
-          <label for="password" class="login-label">Password:</label>
-          <input class="form-control" id="password" type="password" name="password" placeholder="Enter Password" style="width: 300px; margin: 1em" class="form-control"/>
+      <% } %>
+      </div>
+
+    <div class="message-container">
+      <form action="/adminMessage" method="POST" class="admin-message">
+        <input type="hidden" id="sender_id" name="sender_id" value=<%=user_id%>>
+        <input type="hidden" id="receiver_id" name="receiver_id" value=1>
+        <label for="Message"><strong>Create New Message</strong></label>
+        <textarea name="text" id="message" name="message" style="margin-bottom: 10px"></textarea>
+        <div id="submit-message">
+        <input type="submit" value="Submit">
         </div>
-        <div class="login-button">
-        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
         </div>
-    </form>
-</main>
+  </section>
 
 <%- include('partials/footer') %>
 
