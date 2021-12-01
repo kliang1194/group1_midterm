@@ -1,19 +1,30 @@
 div.message-history {
-  width: 600px;
+  width: 700px;
 }
 
 div.no-existing-messages {
-  width: 600px;
+  width: 700px;
+  display: flex;
+justify-content: center;
+font-family: "Roboto Mono", monospace;
+font-size: 15px;
 }
 
 div.individual-message {
-  border: 1px solid blue;
-  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+  width: 700px;
 }
 
-div.sender-names {
-  background-color: blue;
-  color: white;
+div.individual-message-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-between;
+  align-items: center;
 }
 
 div.message-names {
@@ -23,9 +34,9 @@ div.message-names {
 div.message-content {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  padding-right: 10px;
+ padding: 10px;
   background-color: white;
+
 }
 
 div.content {
@@ -39,11 +50,10 @@ div.timestamp {
   padding-bottom: 10px;
 }
 
-form.message-box{
+form.message-box {
   height: 100px;
-  width: 600px;
+  width: 700px;
 }
-
 
 div.back-to-messages {
   margin-top: -10px;
@@ -56,15 +66,17 @@ div.message-container {
   height: 200px;
   justify-content: flex-start;
   width: 100%;
-  padding-top: 15px;
 }
 
 textarea#message {
   height: 150px;
-  width: 100%
+  width: 100%;
+  border-color: transparent;
+  border-radius: 15px;
+  padding: 15px;
 }
 
-section.new-message {
+section.new-message, section.messages {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,13 +84,10 @@ section.new-message {
   justify-content: center;
 }
 
-
-
 div.create-message {
   display: flex;
   flex-direction: column;
 }
-
 
 #submit-message {
   display: flex;
@@ -86,22 +95,60 @@ div.create-message {
   width: 100%;
 }
 
-
-input[type="submit"],
-input[type="submit"] {
-  background: rgb(7, 101, 179);
+input[type=submit],
+input[type=submit] {
+  background: #0765b3;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
+  border-radius: 7px;
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:hover {
-  background: rgb(15, 84, 141);
+input[type=submit]:hover,
+input[type=submit]:hover {
+  background: #0f548d;
 }
 
 /* Buttons' focus effect */
-input[type="submit"]:focus,
-input[type="submit"]:focus {
+input[type=submit]:focus,
+input[type=submit]:focus {
   border-color: #05a;
+}
+
+h1.new-message {
+  color: #05a;
+  font-family: "Roboto Mono", monospace;
+}
+
+button.conversation-button {
+  border-radius: 25px;
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  width: 700px;
+  color: white;
+  background: #0765b3;
+  border-color: transparent;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+button.conversation-button:hover {
+  background: #0f548d;
+}
+
+button.conversation-button:focus {
+  border-color: #05a;
+}
+
+div.message-bar-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+div.message-name {
+  font-size: 25px;
 }

@@ -19,28 +19,31 @@
 <body>
   <%- include('partials/header') %>
 
-    <section class=new-message>
+    <section class="new-message">
       <h1 class="new-message"><strong>Conversation History with Admin</strong></h1>
-
      <% if (user_email && !is_admin) %>
-      <div class="message-history">
-      <% for (let message of messages) { %>
-        <div class="individual-message">
-          <div class="sender-names">
-            <div class="message-names">
-          <span>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></span>
-          </div>
-          </div>
-          <div class="message-content">
-            <div class="content">
-          <%= message["content"] %>
-          </div>
-<div class="timestamp">
-          <%= message["timestamp"] %>
-          </div>
-          </div>
-        </div>
+     <% if (messages.length === 0) { %>
+      <div class="no-existing-messages">
+      <p>You do not currently have any messages with the Admin. Please begin a new conversation.</p>
+     </div>
       <% } %>
+      <div class="message-history">
+        <% for (let message of messages) { %>
+          <div class="individual-message">
+            <div class="individual-message-top">
+              <div class="message-names">
+            <span><b>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></b></span>
+            </div>
+            <div class="message-timestamp">
+              <span><%= message["timestamp"] %></span>
+            </div>
+            </div>
+            <div class="message-content">
+            <p><%= message["content"] %></p>
+            </div>
+            </div>
+            </div>
+          <% } %>
 
     <div class="message-container">
       <form action="/adminMessage" method="POST" class="message-box">
@@ -53,10 +56,12 @@
       </form>
         </div>
 
-
+        <% if (messages.length > 0) { %>
       <div class="back-to-messages">
         <a class="back-to-message-button" href="/messages">Back to Messages</a>
       </div>
+      <% } %>
+
   </section>
 
 <%- include('partials/footer') %>

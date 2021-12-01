@@ -25,20 +25,19 @@
     <div class=message-history">
     <% for (let message of messages) { %>
       <div class="individual-message">
-        <div class="sender-names">
+        <div class="individual-message-top">
           <div class="message-names">
-        <span>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></span>
+        <span><strong>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></strong></span>
+        </div>
+        <div class="message-timestamp">
+          <span><%= message["timestamp"] %></span>
         </div>
         </div>
         <div class="message-content">
-          <div class="content">
-        <%= message["content"] %>
-        </div>
-<div class="timestamp">
-        <%= message["timestamp"] %>
+        <p><%= message["content"] %></p>
         </div>
         </div>
-      </div>
+        </div>
       <% } %>
 
 
