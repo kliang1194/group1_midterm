@@ -55,3 +55,20 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+
+#product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // border: 1px solid black;
+
+}
+
+
+#product-image {
+  // border: 1px solid black;
+}
+
+#product-description {
+  // border: 1px solid black;
+}
