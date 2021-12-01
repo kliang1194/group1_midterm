@@ -22,18 +22,25 @@
     <main style="margin: 1em" id="productPage-form">
       <h3>Description</h3>
         <div class="name-products">
-          <label for="name">Name:</label>
+          <label for="name">Product:</label>
+          <p>Seller Name: <%= seller_name %>
+          <p>Seller ID: <%= product["seller_id"]%></p>
           <p><%= product["name"]%></p>
           <p><%= product["brand"]%></p>
           <p><%= product["price"]%></p>
+          <p><%= product["screen_size"]%></p>
           <p><%= product["color"]%></p>
-          <p><%= product["ram"]%></p>
-          <p><%= product["ram"]%></p>
+          <p><%= product["operating_system"]%></p>
+          <p><%= product["hard_drive_capacity"]%><p>
+          <p><%= product["RAM"]%></p>
+          <p><%= product["description"]%></p>
         </div>
 
+        <div class="product-image">
+          <label for="product-image">Product Image:</label>
+          <p><img src="<%= product['image_url'] %>"<p>
 
-
-
+        </div>
 
         <button type="submit" class="btn btn-primary">Seller Information/Contact seller</button>
       </form>
