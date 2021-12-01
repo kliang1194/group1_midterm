@@ -11,6 +11,8 @@
 
   <!-- Other CSS Style Sheets -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
+
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
 
 
@@ -22,27 +24,63 @@
   <header>
     <%- include('partials/header') %>
   </header>
-
   <section class="messages">
     <div id="inbox-container">
       <div id="conversation">
       <p>My Messages</p>
       <% if (user_email && is_admin) { %>
-        <% const conversation = []; %>
+        <% const conversation = {}; %>
+
         <% for (let message of messages) { %>
-          <% if(!conversation.includes(message.sender_id)) { %>
-            <%  conversation.push(message.sender_id); %>
+
+          <% if (!conversation.hasOwnProperty(message.sender_id)) { %>
+            <%  conversation[message.sender_id] = message.sender_name; %>
+
             <% } %>
             <% } %>
-              <% conversation.map((sender_id)=>{ %>
-                <form action="/messages/<%=sender_id%>" method="GET" >
-                <button>
-                <%= sender_id %>
+            <% for (key in conversation) { %>
+              <form action="/messages/<%=key%>" method="GET" >
+                <button class="conversation-button">
+                Conversation with <%= conversation[key] %>
                 </button>
               </form>
-              <% }); %>
-        <% } %>
+              <% } %>
+        <% } else if (user_email && !is_admin) {%>
+          <% const conversation = {}; %>
 
+          <% for (let message of messages) { %>
+            <% if ((!conversation.hasOwnProperty(message.sender_id)) && (!conversation.hasOwnProperty(message.receiver_id)) && (message.sender_id === user_id)) { %>
+              <%  conversation[message.sender_id] = [message.receiver_name, message.receiver_id]; %>
+               <% } else if ((!conversation.hasOwnProperty(message.receiver_id)) && (!conversation.hasOwnProperty(message.sender_id))) {%>
+                <% conversation[message.sender_id] = [message.sender_name, message.receiver_id]; %>
+              <% } %>
+              <% } %>
+             <%  console.log(conversation); %>
+
+              <% for (key in conversation) { %>
+                <% if (conversation[key][0] === "Admin") { %>
+                <form action="/adminMessage" method="GET" >
+                  <button class="conversation-button">
+                  Conversation with <%= conversation[key][0] %>
+                  </button>
+                </form>
+                <% } %>
+                <% if ((parseInt(key) === user_id) && !(conversation[key][0] === "Admin")) { %>
+                  <form action="/messages/<%= conversation[key][1]%>" method="GET" >
+                    <button class="conversation-button">
+                    Conversation with <%= conversation[key][0] %>
+                    </button>
+                  </form>
+                  <% } %>
+                  <% if (!(parseInt(key) === user_id) && !(conversation[key][0] === "Admin")) {%>
+                    <form action="/messages/<%=key%>" method="GET" >
+                      <button class="conversation-button">
+                      Conversation with <%= conversation[key][0] %>
+                      </button>
+                    </form>
+                    <% } %>
+                <% } %>
+                <% } %>
 
   </section>
 

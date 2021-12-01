@@ -18,15 +18,24 @@
 <body>
   <%- include('partials/header') %>
 
-  <section class=new-message>
-    <h1 class="new-message">New Message to Admin</h1>
+    <section class=new-message>
+      <h1 class="new-message">Conversation History with Admin</h1>
+
+     <% if (user_email && !is_admin) %>
+      <div class=message-history">
+      <% for (let message of messages) { %>
+        <div class="individual-message">
+          <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+          <%= message["content"] %>
+          <%= message["timestamp"] %>
+        </div>
+      <% } %>
+      </div>
+
     <div class="message-container">
       <form action="/adminMessage" method="POST" class="admin-message">
         <input type="hidden" id="sender_id" name="sender_id" value=<%=user_id%>>
         <input type="hidden" id="receiver_id" name="receiver_id" value=1>
-        <input type="hidden" id="user_name" name="user_name" value="<%= user_name %>">
-        <input type="hidden" id="user_email" name="user_email" value="<%= user_email %>">
-        <input type="hidden" id="is_admin" name="is_admin" value=true>
         <label for="Message"><strong>Create New Message</strong></label>
         <textarea name="text" id="message" name="message" style="margin-bottom: 10px"></textarea>
         <div id="submit-message">
