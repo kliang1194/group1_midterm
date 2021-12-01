@@ -16,7 +16,7 @@
   
 
   <!-- App JS -->
-  <!-- <script type="text/javascript" src="/scripts/products_scripts.js"></script> -->
+  <script type="text/javascript" src="/scripts/favorite_products_scripts.js"></script>
 
   <title>My Favorites</title>
 </head>
@@ -30,7 +30,7 @@
   </header>
 
   <main id='products-container'>
-    <% for(let product of favorite_products) { %>
+    <% for(let product of products) { %>
     <article class="product">
       <div class="image-content">
         <img src="<%= product['image_url'] %>" width="200" height="200">
@@ -42,11 +42,13 @@
           <p><%= product['description'] %></p>
         </div>
         <div class="button-section">
-          <form method="GET" action="/products/<%= product['id'] %>">
+          <form method="GET" action="/products/<%= product['product_id'] %>">
             <button type="submit" class="btn btn-primary">More Info</button>
           </form>
-          <%- include('partials/unfavorite', {product, product}) %>
-          <form method="GET" action="/products/<%= product['id'] %>/messages">
+          <form id="unfavorite-button-<%= product['product_id'] %>" method="POST" action="/products/<%= product['product_id'] %>/<%= user_id %>/unFavorite">
+            <button type="submit" class="btn btn-danger">Unfavorite This</button>
+          </form>
+          <form method="GET" action="/products/<%= product['product_id'] %>/messages">
             <button type="submit" class="btn btn-primary">Contact Seller</button>
           </form>
         </div>

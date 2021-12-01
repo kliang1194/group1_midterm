@@ -28,8 +28,9 @@ module.exports = (db) => {
               JOIN favorite_products ON products.id = favorite_products.product_id 
               WHERE user_id = $1;`, [user_id])
       .then(data => {
-        const favorite_products = data.rows;
-        const templateVars = {is_admin, user_email, favorite_products, user_id};
+        const products = data.rows;
+        const templateVars = {is_admin, user_email, products, user_id};
+        console.log(products)
         res.render('favorites', templateVars);
       })
       .catch(err => {
