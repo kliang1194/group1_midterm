@@ -54,6 +54,7 @@ const productsRoutes = require("./routes/products");
 const messagesRoutes = require("./routes/messages");
 const adminRoutes = require("./routes/admin");
 
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/", usersRoutes(db));

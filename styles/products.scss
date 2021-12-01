@@ -55,3 +55,41 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+
+#product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // border: 1px solid black;
+
+}
+
+
+#product-image {
+  // border: 1px solid black;
+}
+
+#product-description {
+  // border: 1px solid black;
+}
+
+#product-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid black;
+
+
+
+}
+
+#product-page-image {
+  border: 1px solid black;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+
+#product-page-description {
+  border: 1px solid black;
+}

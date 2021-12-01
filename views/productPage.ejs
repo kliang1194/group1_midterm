@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/styles/products.css" type="text/css" />
+
+    <title>Product Page</title>
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <main style="margin: 1em" id="productPage-form">
+      <h3>Description</h3>
+
+        <div id="product-page-grid">
+          <div id="product-page-image">
+            <div class="product-image">
+              <label for="product-image">Product Image:</label>
+              <p><img src="<%= product['image_url'] %>"<p>
+
+            </div>
+          </div>
+          <div id="product-page-description">
+            <div class="name-products">
+              <label for="name">Product:</label>
+              <p>Seller Name: <%= seller_name %>
+              <p>Seller ID: <%= product["seller_id"]%></p>
+              <p><%= product["name"]%></p>
+              <p><%= product["brand"]%></p>
+              <p><%= product["price"]%></p>
+              <p><%= product["screen_size"]%></p>
+              <p><%= product["color"]%></p>
+              <p><%= product["operating_system"]%></p>
+              <p><%= product["hard_drive_capacity"]%><p>
+              <p><%= product["RAM"]%></p>
+              <p><%= product["description"]%></p>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+        <button type="submit" class="btn btn-primary">Seller Information/Contact seller</button>
+      </form>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
