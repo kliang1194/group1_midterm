@@ -13,10 +13,10 @@
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  
+
 
   <!-- App JS -->
-  <!-- <script type="text/javascript" src="/scripts/products_scripts.js"></script> -->
+  <script type="text/javascript" src="/scripts/products_scripts.js"></script>
 
   <title>Products</title>
 </head>
@@ -45,10 +45,9 @@
           <form method="GET" action="/products/<%= product['id'] %>">
             <button type="submit" class="btn btn-primary">More Info</button>
           </form>
-          <form method="POST" action="/products/<%= product['id'] %>/<%= user_id %>/newFavorite">
-            <button type="submit" class="btn btn-primary">Favorite This</button>
-          </form>
-          <form method="GET" action="/products/<%= product['id'] %>/messages">
+          <%- include('partials/favorite', {product, product}) %>
+          <%- include('partials/unfavorite', {product, product}) %>
+          <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>">
             <button type="submit" class="btn btn-primary">Contact Seller</button>
           </form>
         </div>
@@ -59,5 +58,4 @@
 
   <%- include('partials/footer') %>
 </body>
-
 </html>

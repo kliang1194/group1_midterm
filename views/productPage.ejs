@@ -12,6 +12,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/styles/products.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
 
     <title>Product Page</title>
   </head>
@@ -22,11 +24,12 @@
     <main style="margin: 1em" id="productPage-form">
       <h3>Description</h3>
 
+      <form>
         <div id="product-page-grid">
           <div id="product-page-image">
             <div class="product-image">
               <label for="product-image">Product Image:</label>
-              <p><img src="<%= product['image_url'] %>"<p>
+              <p><img src="<%= product['image_url'] %>" id="product_image"<p>
 
             </div>
           </div>
@@ -47,12 +50,12 @@
             </div>
           </div>
         </div>
-        
-
-
-
-        <button type="submit" class="btn btn-primary">Seller Information/Contact seller</button>
       </form>
+
+      <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>" class="contact-seller-button">
+        <button type="submit" class="btn btn-primary">Contact Seller</button>
+      </form>
+
     </main>
 
     <%- include('partials/footer') %>
