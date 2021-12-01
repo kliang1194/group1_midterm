@@ -6,6 +6,7 @@
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,27 +23,40 @@
       <h1 class="new-message">Conversation History with Admin</h1>
 
      <% if (user_email && !is_admin) %>
-      <div class=message-history">
+      <div class="message-history">
       <% for (let message of messages) { %>
         <div class="individual-message">
+          <div class="sender-names">
+            <div class="message-names">
           <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+          </div>
+          </div>
+          <div class="message-content">
+            <div class="content">
           <%= message["content"] %>
+          </div>
+<div class="timestamp">
           <%= message["timestamp"] %>
+          </div>
+          </div>
         </div>
       <% } %>
-      </div>
 
     <div class="message-container">
-      <form action="/adminMessage" method="POST" class="admin-message">
+      <form action="/adminMessage" method="POST" class="message-box">
         <input type="hidden" id="sender_id" name="sender_id" value=<%=user_id%>>
         <input type="hidden" id="receiver_id" name="receiver_id" value=1>
-        <label for="Message"><strong>Create New Message</strong></label>
-        <textarea name="text" id="message" name="message" style="margin-bottom: 10px"></textarea>
+        <textarea name="text" id="message" name="message" style="margin-bottom: 10px" placeholder="Create New Message"></textarea>
         <div id="submit-message">
         <input type="submit" value="Submit">
         </div>
       </form>
         </div>
+
+
+      <div class="back-to-messages">
+        <a class="back-to-message-button" href="/messages">Back to Messages</a>
+      </div>
   </section>
 
 <%- include('partials/footer') %>

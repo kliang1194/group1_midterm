@@ -6,12 +6,13 @@
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-  <title>Create New Message</title>
+  <title>Create New Message with the Seller</title>
 
 </head>
 
@@ -19,34 +20,50 @@
   <%- include('partials/header') %>
 
   <section class="new-message">
-    <h1 class="new-message">Create New Message</h1>
+    <h1 class="new-message">Conversation History with <%= seller_name %></h1>
+    <div class=message-history">
+      <% if (messages.length === 0) { %>
+        <div class="no-existing-messages">
+        <p>You do not currently have any messages with this seller. Please begin a new conversation with the seller about the product you are interested in.</p>
+       </div>
+        <% } %>
+
+    <% for (let message of messages) { %>
+      <div class="individual-message">
+        <div class="sender-names">
+          <div class="message-names">
+        <p>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></p>
+        </div>
+        </div>
+        <div class="message-content">
+          <div class="content">
+        <%= message["content"] %>
+        </div>
+<div class="timestamp">
+        <%= message["timestamp"] %>
+        </div>
+        </div>
+      </div>
+      <% } %>
+
+
     <div class="message-container">
-      <div class="seller_name">
-      <label for="seller_name" class="seller_name">Seller Name:</label>
+      <form action="/newMessage/<%= product_id %>/<%= receiver_id %>" method="POST" class="message-box">
+        <input type="hidden" id="sender_id" name="sender_id" value=<%=user_id%>>
+        <input type="hidden" id="receiver_id" name="receiver_id" value=<%= receiver_id %>>
+        <textarea name="text" id="message" name="message" style="margin-bottom: 10px" placeholder="Create New Message"></textarea>
+        <div id="submit-message">
+        <input type="submit" value="Submit">
+        </div>
+      </form>
       </div>
 
-      <form action="/newMessage" method="POST" class="new-message">
+      <div class="back-to-messages">
+        <a class="back-to-message-button" href="/messages">Back to Messages</a>
+      </div>
 
-        <label for="product_id">Product ID: (Render Product ID Here)</label>
-        <input type="hidden" id="product_id" name="product_id" value=1>
-
-        <input type="hidden" id="sender_id" name="sender_id" value=<%= user_id%>>
-        <input type="hidden" id="receiver_id" name="receiver_id" value=2>
-        <input type="hidden" id="user_name" name="user_name" value="<%= user_name %>">
-        <input type="hidden" id="user_email" name="user_email" value="<%= user_email %>">
-        <input type="hidden" id="is_admin" name="is_admin" value=false >
-
-        <label for="Message"><strong>Create New Message</strong></label>
-        <textarea name="text" id="message" name="message" style="margin-bottom: 10px"></textarea>
-
-        <div id="submit-message">
-           <input type="submit" value="Submit">
-           </div>
-
-      </form>
-
-  </div>
   </section>
+
 
 <%- include('partials/footer') %>
 
