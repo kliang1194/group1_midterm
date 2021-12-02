@@ -1,6 +1,23 @@
-body,
 html {
   margin: 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+body {
+  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 100vh;
+  background: #a3d0db;
+  background: linear-gradient(227deg, #a3d0db 0%, #a3b0db 20%, #a3addb 34%, #a3dbd0 59%, #a3d0db 74%, #a3d0db 100%);
+}
+
+nav.header-main {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  width: 100%;
 }
 
 div.nav {
@@ -9,7 +26,7 @@ div.nav {
   height: 60px;
   flex-direction: row;
   justify-content: space-between;
-  background-color: blue;
+  background-color: #28d;
   align-items: center;
   color: white;
 }
@@ -18,6 +35,7 @@ div.nav-left {
   display: flex;
   flex-direction: row;
   margin-left: 1em;
+  align-items: center;
 }
 
 div.nav-right {
@@ -31,7 +49,7 @@ div.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: blue;
+  background-color: #28d;
   justify-content: flex-start;
   align-items: center;
   padding-left: 15px;
@@ -43,12 +61,13 @@ div.footer {
   padding-right: 10px;
 }
 
-#login-form, #registration-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #logo {
   padding-right: 10px;
+  font-size: 30px;
+  margin-bottom: 0px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.footer-item-footer-link {
+  color: white;
 }

@@ -7,32 +7,33 @@
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
 
-  <title>Register</title>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <title>Login</title>
 
 </head>
 
 <body>
+  <%- include('partials/header') %>
 
-<%- include('partials/header') %>
 
-<main style="margin: 1em;" id="registration-form">
-      <h3>Create a New User Account</h3>
-      <form method="POST" action="/register" class="user-register">
-        <div class="name-register">
-          <label for"name">Name:</label>
-          <input class="form-control" id="name" type="name" name="name" placeholder="Please enter your name" style="width: 300px; margin: 1em" class="form-control"/>
-          </div>
-        <div class="email-register">
-      <label for="email">E-mail Address:</label>
-      <input class="form-control" id="email" type="email" name="email" placeholder="eg. example@gmail.com" style="width: 300px; margin: 1em" class="form-control"/>
-        </div>
-        <div class="password-register">
-          <label for="password">Password:</label>
-          <input class="form-control" id="password" type="password" name="password" placeholder="Enter Password" style="width: 300px; margin: 1em" class="form-control"/>
-          </div>
-          <button type="submit" class="btn btn-primary">Register</button>
+
+<main style="margin: 1em;" id="register-form">
+
+  <div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Register</h2>
+    <form class="login-container" action="/register" method="POST">
+      <p><input type="name" id="name" name="name" placeholder="Name"></p>
+      <p><input type="email" id="email" name="email" placeholder="Email"></p>
+      <p><input id="password" type="password" name="password" placeholder="Password"></p>
+      <p><button type="submit" class="btn btn-primary">Register</button></p>
     </form>
+  </div>
+
 </main>
 
 <%- include('partials/footer') %>
@@ -42,5 +43,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+
+
 
 </html>

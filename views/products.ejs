@@ -13,7 +13,7 @@
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  
+
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/products_scripts.js"></script>
@@ -47,7 +47,7 @@
           </form>
           <%- include('partials/favorite', {product, product}) %>
           <%- include('partials/unfavorite', {product, product}) %>
-          <form method="GET" action="/products/<%= product['id'] %>/messages">
+          <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>">
             <button type="submit" class="btn btn-primary">Contact Seller</button>
           </form>
         </div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+
+
+  <title>Create New Message with the Seller</title>
+
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <section class="new-message">
+    <h1 class="new-message"><strong>Conversation History with <%= seller_name %></strong></h1>
+    <% if (messages.length === 0) { %>
+      <div class="no-existing-messages">
+      <p>You do not currently have any messages with this seller. Please begin a new conversation with the seller about the product you are interested in.</p>
+     </div>
+      <% } %>
+      <div class="message-history">
+        <% for (let message of messages) { %>
+          <div class="individual-message">
+            <div class="individual-message-top">
+              <div class="message-names">
+            <span><b>From <%= message["sender_name"]%> to <%= message["receiver_name"]%></b></span>
+            </div>
+            <div class="message-timestamp">
+              <span><%= message["timestamp"] %></span>
+            </div>
+            </div>
+            <div class="message-content">
+            <p><%= message["content"] %></p>
+            </div>
+            </div>
+            </div>
+          <% } %>
+
+
+          <div class="message-container">
+            <form action="/newMessage/<%= product_id %>/<%= receiver_id %>" method="POST" class="message-box">
+              <input type="hidden" id="sender_id" name="sender_id" value=<%=user_id%>>
+              <input type="hidden" id="receiver_id" name="receiver_id" value=<%= receiver_id%>>
+              <textarea name="text" id="message" name="message" style="margin-bottom: 10px" placeholder="Create New Message"></textarea>
+              <div id="submit-message">
+              <input type="submit" value="Submit">
+              </div>
+            </form>
+              </div>
+        </section>
+
+
+<%- include('partials/footer') %>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+
+
+</html>
