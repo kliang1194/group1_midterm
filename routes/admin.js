@@ -10,7 +10,6 @@ module.exports = (db) => {
     if(!is_admin) {
       return res.status(401).send("No authorization for admin functionality! (Admin page)");
     };
-
     db.query(`SELECT * FROM products;`)
       .then(data => {
         const products = data.rows;

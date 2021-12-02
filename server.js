@@ -53,6 +53,7 @@ const usersRoutes = require("./routes/users");
 const productsRoutes = require("./routes/products");
 const messagesRoutes = require("./routes/messages");
 const adminRoutes = require("./routes/admin");
+const favoritesRoutes = require("./routes/favorites");
 
 
 // Mount all resource routes
@@ -62,6 +63,7 @@ app.use("/products", productsRoutes(db));
 app.use("/", messagesRoutes(db));
 
 app.use("/admin", adminRoutes(db));
+app.use("/favorites", favoritesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
