@@ -11,9 +11,8 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/styles/products.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/singleProduct.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
 
     <title>Product Page</title>
   </head>
@@ -21,42 +20,39 @@
   <body>
     <%- include('partials/header') %>
 
-    <main style="margin: 1em" id="productPage-form">
-      <h3>Description</h3>
+    <main id="productPage-form">
+      <h3 style="color: white; font-size: 40px;">Product Information</h3>
 
-      <form>
-        <div id="product-page-grid">
-          <div id="product-page-image">
-            <div class="product-image">
-              <label for="product-image">Product Image:</label>
-              <p><img src="<%= product['image_url'] %>" id="product_image"<p>
-
-            </div>
-          </div>
-          <div id="product-page-description">
-            <div class="name-products">
-              <label for="name">Product:</label>
-              <p>Seller Name: <%= seller_name %>
-              <p>Seller ID: <%= product["seller_id"]%></p>
-              <p><%= product["name"]%></p>
-              <p><%= product["brand"]%></p>
-              <p><%= product["price"]%></p>
-              <p><%= product["screen_size"]%></p>
-              <p><%= product["color"]%></p>
-              <p><%= product["operating_system"]%></p>
-              <p><%= product["hard_drive_capacity"]%><p>
-              <p><%= product["RAM"]%></p>
-              <p><%= product["description"]%></p>
-            </div>
-          </div>
+        <div id="single-product-description">
+          <div class="product-image">
+          <label for="product-image">Product Image:</label>
+          <p><img src="<%= product['image_url'] %>" id="single_product_image"<p>
         </div>
-      </form>
+      <div id="product-page-description">
+          <p>Seller Name: <%= seller_name %>
+          <p>Seller ID: <%= product["seller_id"]%>  </p>
+          <p><%= product["name"]%></p>
+          <p><%= product["brand"]%></p>
+          <p><%= product["price"]%></p>
+          <p><%= product["screen_size"]%></p>
+          <p><%= product["color"]%></p>
+          <p><%= product["operating_system"]%></p>
+          <p><%= product["hard_drive_capacity"]%><p>
+          <p><%= product["RAM"]%></p>
+          <p><%= product["description"]%></p>
+        </div>
+      </div>
 
+    </div>
+      <div class="contact-seller">
       <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>" class="contact-seller-button">
         <button type="submit" class="btn btn-primary">Contact Seller</button>
       </form>
-
-    </main>
+      </div>
+    </div>
+    <%- include('partials/favorite', {product, product}) %>
+    <%- include('partials/unfavorite', {product, product}) %>
+  </main>
 
     <%- include('partials/footer') %>
 

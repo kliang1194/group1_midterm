@@ -1,0 +1,10 @@
+div#single-product-description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+img#single_product_image {
+  max-height: 500px;
+  max-width: 500px;
+}

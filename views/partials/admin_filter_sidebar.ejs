@@ -1,0 +1,16 @@
+<button class="openbtn">&#9776; Filter Panel</button>
+<div id="filter-sidepanel" class="sidepanel">
+  <a href="#" class="closebtn">&times;</a>
+  <h3>Filter By Price</h3>
+
+  <form id="filter-form" method="POST" action="/admin/products/filter">
+    <label for="minprice">Min Price:</label>
+    <input class="filter-form" id="minprice" type="number" name="minprice" placeholder="0" style="width: 200px; margin: 1em" class="form-control"/>
+
+    <label for="maxprice">Max Price:</label>
+    <input class="filter-form" id="maxprice" type="number" name="maxprice" placeholder="0" style="width: 200px; margin: 1em" class="form-control"/>
+
+    <button type="submit" id="filter-btn" class="btn btn-primary">Filter</button>
+  </form>
+
+</div>

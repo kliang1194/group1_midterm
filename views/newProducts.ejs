@@ -21,8 +21,9 @@
   <body>
     <%- include('partials/header') %>
 
-    <main style="margin: 1em" id="newProducts-form">
-      <h3>Create Product</h3>
+    <main  id="newProducts-form">
+      <div id="new-product-form">
+      <h3 id="create-product">Create Product</h3>
 
       <form method="POST" action="/products/newProducts" class="new-products">
         <div id="product-grid">
@@ -141,26 +142,29 @@
                 class="form-control"
               />
             </div>
-          </div>
-          <div id="product-image">
-            <div class="image-url">
-              <label for="image">Product Image:</label>
-              <input
-                class="form-control"
-                id="image_url"
-                type="text"
-                name="image_url"
-                placeholder=""
-                style="width: 300px; margin: 1em"
-                class="form-control"
-              />
+            <div id="product-image">
+              <div class="image-url">
+                <label for="image">Product Image:</label>
+                <input
+                  class="form-control"
+                  id="image_url"
+                  type="text"
+                  name="image_url"
+                  placeholder=""
+                  style="width: 300px; margin: 1em"
+                  class="form-control"
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <button type="submit" class="btn btn-primary">Create Product</button>
+          <div class="create-product-button">
+            <button type="submit" class="btn btn-primary">Create Product</button>
+          </div>
         </div>
+      </div>
+
+
       </form>
     </main>
 

@@ -4,6 +4,49 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
+  //render messages page to display all messages for the logged in user//
+  router.get("/messages", (req, res) => {
+    const user_email = req.session.user_email;
+    const user_id = req.session.user_id;
+    const is_admin = req.session.is_admin;
+    if (user_email && is_admin) {
+    const sqlQuery = `
+    SELECT m.*, us.name as sender_name, ur.name as receiver_name
+    FROM messages m
+    INNER JOIN users us on m.sender_id = us.id
+    INNER JOIN users ur on m.receiver_id = ur.id
+    WHERE m.receiver_id = $1
+    ORDER BY timestamp DESC;`
+    db.query(sqlQuery, [user_id])
+    .then((data) => {
+      const messages = data.rows;
+      console.log(messages);
+        const templateVars = {messages, is_admin, user_email, user_id};
+        return res.render("messages", templateVars);
+      })
+    .catch((err) => {
+      res.status(500).json({error: err.message});
+    });
+  } else if (user_email && !is_admin) {
+    const sqlQuery = `
+    SELECT m.*, us.name as sender_name, ur.name as receiver_name
+    FROM messages m
+    INNER JOIN users us on m.sender_id = us.id
+    INNER JOIN users ur on m.receiver_id = ur.id
+    WHERE m.receiver_id = $1 OR m.sender_id = $1
+    ORDER BY timestamp DESC;`
+    db.query(sqlQuery, [user_id])
+    .then((data) => {
+      const messages = data.rows;
+        const templateVars = {messages, is_admin, user_email, user_id};
+        return res.render("messages", templateVars);
+      })
+    .catch((err) => {
+      res.status(500).json({error: err.message});
+    });
+  };
+  });
+
   //render page to send messages to other users//
   router.get("/newMessage/:product_id/:seller_id", (req, res) => {
     const user_id = req.session.user_id;
@@ -128,108 +171,65 @@ module.exports = (db) => {
       });
       });
 
-//render individual conversation with sender from user to admin or other user//
-router.get("/messages/:sender_id", (req, res) => {
-  const user_id = req.session.user_id;
-  const sender_id = req.params.sender_id;
-  const user_email = req.session.user_email;
-  const is_admin = req.session.is_admin;
-  if (user_email && is_admin) {
-  const value = [sender_id, user_id];
-  const sqlQuery = `
-  SELECT m.*, us.name as sender_name, ur.name as receiver_name
-  FROM messages m
-  INNER JOIN users us on m.sender_id = us.id
-  INNER JOIN users ur on m.receiver_id = ur.id
-  WHERE (sender_id = $1 AND receiver_id = $2) OR (receiver_id = $1 AND sender_id = $2)
-  ORDER BY timestamp ASC;`
-  db.query(sqlQuery, value)
-  .then((data) => {
-    const user_name = data.rows[0].sender_name
-    const messages = data.rows;
-    console.log(messages);
-    const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
-    res.render("respondUser", templateVars);
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
-  })
-} else if (user_email && !is_admin) {
-  const value = [sender_id, user_id];
-  const sqlQuery = `
-  SELECT m.*, us.name as sender_name, ur.name as receiver_name
-  FROM messages m
-  INNER JOIN users us on m.sender_id = us.id
-  INNER JOIN users ur on m.receiver_id = ur.id
-  WHERE (sender_id = $1 AND receiver_id = $2) OR (receiver_id = $1 AND sender_id = $2)
-  ORDER BY timestamp ASC;`
-  db.query(sqlQuery, value)
-  .then((data) => {
-    const username = ""
-    if (data.rows[0].sender_id === user_id) {
-      user_name = data.rows[0].receiver_name;
+  //render individual conversation with sender from user to admin or other user//
+  router.get("/messages/:sender_id", (req, res) => {
+    const user_id = req.session.user_id;
+    const sender_id = req.params.sender_id;
+    const user_email = req.session.user_email;
+    const is_admin = req.session.is_admin;
+    if (user_email && is_admin) {
+    const value = [sender_id, user_id];
+    const sqlQuery = `
+    SELECT m.*, us.name as sender_name, ur.name as receiver_name
+    FROM messages m
+    INNER JOIN users us on m.sender_id = us.id
+    INNER JOIN users ur on m.receiver_id = ur.id
+    WHERE (sender_id = $1 AND receiver_id = $2) OR (receiver_id = $1 AND sender_id = $2)
+    ORDER BY timestamp ASC;`
+    db.query(sqlQuery, value)
+    .then((data) => {
+      const user_name = data.rows[0].sender_name
       const messages = data.rows;
-    const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
-    res.render("respondUser", templateVars);
-    }
-    if (data.rows[0].sender_id !== user_id)
-    user_name = data.rows[0].sender_name;
-    const messages = data.rows;
-    const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
-    res.render("respondUser", templateVars);
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
-  })
-}
-});
-
-//render messages page to display all messages for the logged in user//
-router.get("/messages", (req, res) => {
-  const user_email = req.session.user_email;
-  const user_id = req.session.user_id;
-  const is_admin = req.session.is_admin;
-  if (user_email && is_admin) {
-  const sqlQuery = `
-  SELECT m.*, us.name as sender_name, ur.name as receiver_name
-  FROM messages m
-  INNER JOIN users us on m.sender_id = us.id
-  INNER JOIN users ur on m.receiver_id = ur.id
-  WHERE m.receiver_id = $1
-  ORDER BY timestamp DESC;`
-  db.query(sqlQuery, [user_id])
-  .then((data) => {
-    const messages = data.rows;
-    console.log(messages);
-      const templateVars = {messages, is_admin, user_email, user_id};
-      return res.render("messages", templateVars);
+      console.log(messages);
+      const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
+      res.render("respondUser", templateVars);
     })
-  .catch((err) => {
-    res.status(500).json({error: err.message});
-  });
-} else if (user_email && !is_admin) {
-  const sqlQuery = `
-  SELECT m.*, us.name as sender_name, ur.name as receiver_name
-  FROM messages m
-  INNER JOIN users us on m.sender_id = us.id
-  INNER JOIN users ur on m.receiver_id = ur.id
-  WHERE m.receiver_id = $1 OR m.sender_id = $1
-  ORDER BY timestamp DESC;`
-  db.query(sqlQuery, [user_id])
-  .then((data) => {
-    const messages = data.rows;
-      const templateVars = {messages, is_admin, user_email, user_id};
-      return res.render("messages", templateVars);
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
     })
-  .catch((err) => {
-    res.status(500).json({error: err.message});
+  } else if (user_email && !is_admin) {
+    const value = [sender_id, user_id];
+    const sqlQuery = `
+    SELECT m.*, us.name as sender_name, ur.name as receiver_name
+    FROM messages m
+    INNER JOIN users us on m.sender_id = us.id
+    INNER JOIN users ur on m.receiver_id = ur.id
+    WHERE (sender_id = $1 AND receiver_id = $2) OR (receiver_id = $1 AND sender_id = $2)
+    ORDER BY timestamp ASC;`
+    db.query(sqlQuery, value)
+    .then((data) => {
+      const username = ""
+      if (data.rows[0].sender_id === user_id) {
+        user_name = data.rows[0].receiver_name;
+        const messages = data.rows;
+      const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
+      res.render("respondUser", templateVars);
+      }
+      if (data.rows[0].sender_id !== user_id)
+      user_name = data.rows[0].sender_name;
+      const messages = data.rows;
+      const templateVars = {user_id, sender_id, user_email, is_admin, messages, user_name};
+      res.render("respondUser", templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+  }
   });
-};
-});
 
 
   return router;

@@ -22,9 +22,9 @@
     <h1 class="new-message"><strong>Conversation History with <%= seller_name %></strong></h1>
     <% if (messages.length === 0) { %>
       <div class="no-existing-messages">
-      <p>You do not currently have any messages with this seller. Please begin a new conversation with the seller about the product you are interested in.</p>
+      <p style="color: white;">You do not currently have any messages with this seller. Please begin a new conversation with the seller about the product you are interested in.</p>
      </div>
-      <% } %>
+      <% } else { %>
       <div class="message-history">
         <% for (let message of messages) { %>
           <div class="individual-message">
@@ -40,8 +40,10 @@
             <p><%= message["content"] %></p>
             </div>
             </div>
-            </div>
+<% } %>
           <% } %>
+
+        </div>
 
 
           <div class="message-container">

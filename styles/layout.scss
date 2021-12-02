@@ -7,10 +7,8 @@ html {
 body {
   margin: 0;
   padding-top: 40px;
-  padding-bottom: 40px;
-  min-height: 100vh;
-  background: #a3d0db;
-  background: linear-gradient(227deg, #a3d0db 0%, #a3b0db 20%, #a3addb 34%, #a3dbd0 59%, #a3d0db 74%, #a3d0db 100%);
+  margin-bottom: 40px;
+  background-color: #133055;
 }
 
 nav.header-main {
@@ -26,7 +24,7 @@ div.nav {
   height: 60px;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #28d;
+  background-color: #386FA4;
   align-items: center;
   color: white;
 }
@@ -43,15 +41,16 @@ div.nav-right {
   flex-direction: row;
 }
 
-div.footer {
+div.footer-1 {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   height: 60px;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #28d;
-  justify-content: flex-start;
-  align-items: center;
+  background-color: #386FA4;
   padding-left: 15px;
 }
 
@@ -65,9 +64,68 @@ div.footer {
   padding-right: 10px;
   font-size: 30px;
   margin-bottom: 0px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 .footer-item-footer-link {
   color: white;
+}
+
+h3 {
+  font-family: "Roboto Mono", monospace;
+}
+
+div.footer-2 {
+  display: flex;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #386FA4;
+  padding-left: 15px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+h6#footer-text {
+  font-family: "Roboto Mono", monospace;
+  color: white;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+// button[type=submit],
+// button[type=submit] {
+//   background: #0765b3;
+//   border-color: transparent;
+//   color: #fff;
+//   cursor: pointer;
+// }
+
+// button[type=submit]:hover,
+// button[type=submit]:hover {
+//   background: #0f548d;
+// }
+
+// /* Buttons' focus effect */
+// button[type=submit]:focus,
+// button[type=submit]:focus {
+//   border-color: #05a;
+// }
+
+#login-form, #registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+div#login-box, div#register-box {
+  background-color: #386FA4;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

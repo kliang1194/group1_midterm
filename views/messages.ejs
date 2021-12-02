@@ -30,10 +30,10 @@
     <%- include('partials/header') %>
   </header>
   <section class="messages">
-    <h1 class="new-message"><strong>My Messages</strong></h1>
+    <h1 class="new-message" style="margin-bottom: 20px;"><strong>My Messages</strong></h1>
     <% if (messages.length === 0) { %>
       <div class="no-existing-messages">
-        <p>You do not currently have any messages.</p>
+        <p style="color: white;">You do not currently have any messages.</p>
        </div>
        <% } %>
     <div id="inbox-container">
