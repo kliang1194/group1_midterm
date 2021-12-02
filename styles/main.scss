@@ -76,22 +76,22 @@
   border-color: #888;
 }
 
-button[type="submit"],
-button[type="submit"] {
+button[class="btn btn-primary"],
+button[class="btn btn-primary"] {
   background: rgb(7, 101, 179);
   border-color: transparent;
   color: #fff;
   cursor: pointer;
 }
 
-button[type="submit"]:hover,
-button[type="submit"]:hover {
+button[class="btn btn-primary"]:hover,
+button[class="btn btn-primary"]:hover {
   background: rgb(15, 84, 141);
 }
 
 /* Buttons' focus effect */
-button[type="submit"]:focus,
-button[type="submit"]:focus {
+button[class="btn btn-primary"]:focus,
+button[class="btn btn-primary"]:focus {
   border-color: #05a;
 }
 
@@ -100,4 +100,3 @@ button[type="submit"]:focus {
   flex-direction: column;
   align-items: center;
 }
-
