@@ -48,7 +48,7 @@
           <form id="unfavorite-button-<%= product['product_id'] %>" method="POST" action="/products/<%= product['product_id'] %>/<%= user_id %>/unFavorite">
             <button type="submit" class="btn btn-danger">Unfavorite This</button>
           </form>
-          <form method="GET" action="/products/<%= product['product_id'] %>/messages">
+          <form method="GET" action="/newMessage/<%= product['product_id'] %>/<%=product['seller_id']%>">
             <button type="submit" class="btn btn-primary">Contact Seller</button>
           </form>
         </div>
