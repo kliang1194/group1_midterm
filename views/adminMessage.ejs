@@ -24,7 +24,7 @@
      <% if (user_email && !is_admin) %>
      <% if (messages.length === 0) { %>
       <div class="no-existing-messages">
-      <p>You do not currently have any messages with the Admin. Please begin a new conversation.</p>
+      <p style="color: white;">You do not currently have any messages with the Admin. Please begin a new conversation.</p>
      </div>
       <% } %>
       <div class="message-history">
@@ -42,8 +42,13 @@
             <p><%= message["content"] %></p>
             </div>
             </div>
-            </div>
+
           <% } %>
+
+        </div>
+
+
+
 
     <div class="message-container">
       <form action="/adminMessage" method="POST" class="message-box">
@@ -56,9 +61,10 @@
       </form>
         </div>
 
+
         <% if (messages.length > 0) { %>
       <div class="back-to-messages">
-        <a class="back-to-message-button" href="/messages">Back to Messages</a>
+        <a class="back-to-message-button" href="/messages" style="color: #84D2f6;">Back to Messages</a>
       </div>
       <% } %>
 

@@ -7,9 +7,9 @@ module.exports = (db) => {
     const user_email = req.session.user_email;
     const is_admin = req.session.is_admin;
     const user_id = req.session.user_id;
-    
-    db.query(`SELECT * FROM products 
-              JOIN favorite_products ON products.id = favorite_products.product_id 
+
+    db.query(`SELECT * FROM products
+              JOIN favorite_products ON products.id = favorite_products.product_id
               WHERE user_id = $1;`, [user_id])
       .then(data => {
         const products = data.rows;
@@ -26,7 +26,7 @@ module.exports = (db) => {
 
   router.get("/json", (req, res) => {
     const user_id = req.session.user_id;
-    
+
     db.query(`SELECT * FROM favorite_products
               WHERE user_id = $1;`, [user_id])
       .then(data => {
@@ -39,6 +39,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-   
+
   return router;
 };

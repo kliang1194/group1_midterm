@@ -6,9 +6,9 @@
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
@@ -22,7 +22,7 @@
   <section class=new-message>
 
    <h1 class="new-message"><strong>Conversation History with <%= user_name %></strong></h1>
-    <div class=message-history">
+    <div class="message-history">
     <% for (let message of messages) { %>
       <div class="individual-message">
         <div class="individual-message-top">
@@ -37,9 +37,9 @@
         <p><%= message["content"] %></p>
         </div>
         </div>
-        </div>
-      <% } %>
 
+      <% } %>
+    </div>
 
 
     <div class="message-container">
@@ -54,7 +54,7 @@
       </div>
 
       <div class="back-to-messages">
-        <a class="back-to-message-button" href="/messages">Back to Messages</a>
+        <a class="back-to-message-button" href="/messages" style="color: #84D2f6;">Back to Messages</a>
       </div>
 
   </section>

@@ -8,7 +8,7 @@ $(document).ready(function() {
       $(`#un${target_id}`).css("display", "inline-block");
 
       $(this).unbind('submit').submit();                              // Submit form
-    })
+    });
 
     $('[id*="unfavorite-button"]').submit(function(event) {
       event.preventDefault();                                         // Pause form submition
@@ -19,9 +19,45 @@ $(document).ready(function() {
       $(`#${target_id_2}`).css("display", "inline-block");
 
       $(this).unbind('submit').submit();                              // Submit form
-    })
+    });
+
+    $('.openbtn').on("click", function() {
+      openNav();
+    });
+
+    $('.closebtn').on("click", function() {
+      closeNav();
+    });
+
+    // $('#minprice').on('keyup change', function() {
+    //   if ($('#minprice').val() || $('#maxprice').val()) {
+    //      $('#filter-btn').removeAttr('disabled');
+    //   } else {
+    //     $("#filter-btn").attr("disabled", true);
+    //   }
+    // });
+
+    // $('#maxprice').on('keyup change', function() {
+    //   if ($('#minprice').val() || $('#maxprice').val()) {
+    //      $('#filter-btn').removeAttr('disabled');
+    //   } else {
+    //     $("#filter-btn").attr("disabled", true);
+    //   }
+    // });
+
+    // $("#filter-btn").submit(function(event) {
+    //   event.preventDefault();
+    //   console.log('minprice: ' + $('#minprice').val());
+    //   console.log('maxprice: ' + $('#maxprice').val())
+    // });
+
   });
-  
+
+  const checkValidFilter = function(minprice, maxprice) {
+
+  };
+
+
   const renderUnfavorites = function(data) {
     for (const product of data) {
       $(`#favorite-button-${product.product_id}`).css("display", "none");
@@ -43,6 +79,16 @@ $(document).ready(function() {
       }
     });
   };
+
+  /* Set the width of the sidebar to 250px (show it) */
+  function openNav() {
+    document.getElementById("filter-sidepanel").style.width = "250px";
+  }
+
+  /* Set the width of the sidebar to 0 (hide it) */
+  function closeNav() {
+    document.getElementById("filter-sidepanel").style.width = "0";
+  }
 
   loadFavorites();
 

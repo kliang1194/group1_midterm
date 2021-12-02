@@ -6,17 +6,21 @@
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 </head>
 
 <body>
   <nav class="footer-main">
     <% if (user_email && !is_admin) { %>
-      <div class="footer">
-        <a class="footer-item-footer-link" href="/adminMessage">Contact Admin</a>
+      <div class="footer-1">
+        <div class="footer-left"><a class="footer-item-footer-link" href="/adminMessage">Contact Admin</a></div>
+     <div class="footer-right"><h6 id="footer-text">For when you are running low on laptops</h6></div>
         </div>
       <% } else { %>
-        <div class="footer">
+        <div class="footer-2">
+          <div class="footer-right">
+            <h6 id="footer-text">For when you are running low on laptops</h6>
+          </div>
         </div>
     <% } %>
   </nav>

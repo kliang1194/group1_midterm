@@ -2,49 +2,40 @@ html {
   margin: 0;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
-}
-
 .header {
   display: flex;
   justify-content: center;
 }
 
 #products-container {
-  margin: 1em 12em 5em 12em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .product {
   display: flex;
-  justify-content: space-between;
-  margin: 2em 8em;
+  width: 100%;
+  justify-content: center;
 }
 
-.product-content {
+div.product-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 2;
+  width: 50%;
+  background-color: #6eb2d9;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .description-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .description-section p {
@@ -53,46 +44,15 @@ body {
 
 .button-section {
   display: flex;
-  justify-content: space-between;
-}
-
-
-#product-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  // border: 1px solid black;
-
-}
-
-
-#product-image {
-  // border: 1px solid black;
-}
-
-#product-description {
-  // border: 1px solid black;
+  justify-content: space-around;
 }
 
 #product-page-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  // border: 1px solid black;
-
-
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
 }
-
-#product-page-image {
-  // border: 1px solid black;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-
-
-#product-page-description {
-  // border: 1px solid black;
-}
-
 
 form.contact-seller-button {
   margin-top: 10px;
@@ -101,4 +61,152 @@ form.contact-seller-button {
 #product_image {
   width: 500px;
   height: 400px;
+}
+
+/* The sidepanel menu */
+.sidepanel {
+  height: 400px;
+  /* Specify a height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 10;
+  left: 0;
+  background: #386FA4;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidepanel */
+  margin-top: 1em;
+  border-radius: 15px;
+}
+
+.sidepanel h3 {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  font-family: "Roboto Mono", monospace;
+}
+
+.sidepanel label {
+  padding: 2px 2px 0 2px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  font-family: "Roboto Mono", monospace;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidepanel button {
+  position: absolute;
+  right: 25px;
+  bottom: 20px;
+  font-size: 20px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  width: 15%;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+img.product-image {
+  border-radius: 20px;
+}
+
+.description-information {
+  background-color: white;
+  width: 100%;
+  margin-right: 10px;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+h1#products {
+  font-family: "Roboto Mono", monospace;
+  color: white;
+}
+
+button.openbtn {
+  background: #386FA4;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+  position: fixed;
+  z-index: 1;
+  top: 4em;
+  left: 0;
+}
+
+button.openbtn:hover {
+  background: #0f548d;
+}
+
+button.openbtn:focus {
+  border-color: #05a;
+}
+
+div#new-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+h3#create-product {
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+
+div#product-description {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  max-height: 600px;
+  max-width: 500px;
+  align-content: space-around;
+}
+
+div.create-product-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
