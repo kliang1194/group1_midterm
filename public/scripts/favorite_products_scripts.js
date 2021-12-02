@@ -22,7 +22,7 @@ $(document).ready(function() {
 
   const loadFavorites = function() {
     $.ajax({
-      url: '/favorites',
+      url: '/favorites/json',
       method: 'GET',
       dataType: 'json',
       success: (data) => {

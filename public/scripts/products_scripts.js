@@ -4,7 +4,6 @@ $(document).ready(function() {
     $('[id*="favorite-button"]').submit(function(event) {
       event.preventDefault();                                         // Pause form submition
       const target_id = event.target.id;
-      alert(event.target.action);
       $(`#${target_id}`).css("display", "none");
       $(`#un${target_id}`).css("display", "inline-block");
 
@@ -32,7 +31,7 @@ $(document).ready(function() {
 
   const loadFavorites = function() {
     $.ajax({
-      url: '/favorites',
+      url: '/favorites/json',
       method: 'GET',
       dataType: 'json',
       success: (data) => {

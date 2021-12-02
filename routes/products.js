@@ -6,7 +6,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const user_email = req.session.user_email;
     const is_admin = req.session.is_admin;
-    const user_id = req.session.user_id;
+    let user_id = req.session.user_id;
 
     if (is_admin) {
       return res.redirect("/admin/products");
@@ -14,6 +14,9 @@ module.exports = (db) => {
 
     db.query(`SELECT * FROM products;`)
       .then((data) => {
+        if (user_id === undefined) {
+          user_id = 'undefined';
+        }
         const products = data.rows;
         const templateVars = { is_admin, user_email, products, user_id };
         res.render("products", templateVars);
@@ -85,6 +88,10 @@ module.exports = (db) => {
     const current_user_id = req.session.user_id;
     const user_id = req.params.user_id;
     const product_id = req.params.product_id;
+
+    if(user_id === 'undefined' || current_user_id === 'undefined') {
+      return res.redirect('/login');
+    };
 
     if(current_user_id.toString() !== user_id) {
       return res.status(400).send("Invalid Favorite request! (User Favorite function)");
