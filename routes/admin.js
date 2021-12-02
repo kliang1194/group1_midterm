@@ -81,5 +81,49 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/products/filter", (req, res) => {
+    const user_email = req.session.user_email;
+    const is_admin = req.session.is_admin;
+    let user_id = req.session.user_id;
+    const min_price = req.body.minprice;
+    const max_price = req.body.maxprice;
+
+    let query = ''
+    const queryParams = [];
+    if (!min_price && !max_price) {
+      query += 'SELECT * FROM products;'
+    } else {
+      query += 'SELECT * FROM products WHERE '
+      if (min_price && max_price) {
+        queryParams.push(min_price);
+        query += 'price >= $1';
+        queryParams.push(max_price);
+        query += ' AND price <= $2';
+      } else if (min_price) {
+        queryParams.push(min_price);
+        query += 'price >= $1';
+      } else if (max_price) {
+        queryParams.push(max_price);
+        query += 'price <= $1';
+      };
+      query += ';';
+    }
+
+    db.query(query, queryParams)
+      .then(data => {
+        if (user_id === undefined) {
+          user_id = 'undefined';
+        };
+        const products = data.rows;
+        const templateVars = { is_admin, user_email, products, user_id };
+        res.render("admin_products", templateVars);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };

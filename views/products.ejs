@@ -29,9 +29,11 @@
     <h1>Products</h1>
   </header>
 
+  <%- include('partials/filter_sidebar') %>
+
   <main id='products-container'>
     <% for(let product of products) { %>
-    <article class="product">
+    <article id="product-<%= product['id'] %>" class="product">
       <div class="image-content">
         <img src="<%= product['image_url'] %>" width="200" height="200">
       </div>
