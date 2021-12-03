@@ -31,11 +31,6 @@ $(document).ready(function() {
 
   });
 
-  const checkValidFilter = function(minprice, maxprice) {
-
-  };
-
-
   const renderUnfavorites = function(data) {
     for (const product of data) {
       $(`#favorite-button-${product.product_id}`).css("display", "none");

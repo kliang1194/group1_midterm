@@ -10,10 +10,14 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    const user_email = req.session.user_email;
+    const is_admin = req.session.is_admin;
+    const user_id = req.session.user_id;
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
-        res.render('index');
+        const templateVars = {is_admin, user_email, user_id};
+        res.render('index', templateVars);
       })
       .catch(err => {
           res.status(500)
@@ -106,12 +110,26 @@ router.post("/register", (req, res) => {
     });
 });
 
+router.get("/features/json", (req, res) => {
+  const value = [true, '3'];
+  const sqlQuery = `SELECT * FROM products WHERE is_featured = $1 LIMIT $2;`
+  db.query(sqlQuery, value)
+  .then((data) => {
+      const featured_items = data.rows;
+      return res.json(featured_items);
+    })
+  .catch((err) => {
+    res.status(500).json({error: err.message});
+  })
+});
+
 //post to logout and delete cookies//
 //deleting user session once user logs out
 router.post("/logout", (req, res) => {
   req.session = null;
   res.redirect("/");
 });
+
 
 
 

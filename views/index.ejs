@@ -6,23 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/features_slideshow.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
+  <script type="text/javascript" src="/scripts/featured_products_scripts.js"></script>
 
   <title>Laptop Station</title>
 </head>
 
 <body>
+  <%- include('partials/header') %>
   <h1>Welcome to Laptop Station!</h1>
 
   <%- include('partials/features_slideshow') %>
-
-
 
 <script>
   var slideIndex = 1;
@@ -54,6 +51,8 @@
     dots[slideIndex-1].className += " active";
   }
 </script>
+
+  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 </body>
 
 </html>
