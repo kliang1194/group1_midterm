@@ -24,34 +24,43 @@
       <h3 style="color: white; font-size: 40px;">Product Information</h3>
 
         <div id="single-product-description">
-          <div class="product-image">
-          <label for="product-image">Product Image:</label>
-          <p><img src="<%= product['image_url'] %>" id="single_product_image"<p>
+          <div id="single-product-container">
+            <div class="single-product-image">
+            <p><img src="<%= product['image_url'] %>" id="single_product_image"<p>
+          </div>
+        <div id="single-page-description">
+            <p><b>Seller Name:</b> <%= seller_name %> </p>
+            <p><b>Seller ID: </b> <%= product["seller_id"]%>  </p>
+            <p><b>Product Name: </b> <%= product["name"]%></p>
+            <p><b>Brand: </b><%= product["brand"]%></p>
+            <p><b>Price: $</b><%= product["price"]%></p>
+            <p><b>Screen Size: </b><%= product["screen_size"]%></p>
+            <p><b>Color: </b><%= product["color"]%></p>
+            <p><b>Operating System: </b><%= product["operating_system"]%></p>
+            <p><b>Hard Drive Capacity: </b><%= product["hard_drive_capacity"]%><p>
+            <p><b>RAM: </b><%= product["RAM"]%></p>
+            <p><b>Description: </b></Description><%= product["description"]%></p>
+          </div>
         </div>
-      <div id="product-page-description">
-          <p>Seller Name: <%= seller_name %>
-          <p>Seller ID: <%= product["seller_id"]%>  </p>
-          <p><%= product["name"]%></p>
-          <p><%= product["brand"]%></p>
-          <p><%= product["price"]%></p>
-          <p><%= product["screen_size"]%></p>
-          <p><%= product["color"]%></p>
-          <p><%= product["operating_system"]%></p>
-          <p><%= product["hard_drive_capacity"]%><p>
-          <p><%= product["RAM"]%></p>
-          <p><%= product["description"]%></p>
-        </div>
+
       </div>
 
     </div>
-      <div class="contact-seller">
+
+    <% if (is_admin) { %>
+      <div class="single-product-page-buttons">
       <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>" class="contact-seller-button">
         <button type="submit" class="btn btn-primary">Contact Seller</button>
+    <% } else {%>
+
+    <div class="single-product-page-buttons">
+      <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>" class="contact-seller-button" target="_blanks">
+        <button type="submit" class="btn btn-primary">Contact Seller</button>
       </form>
-      </div>
-    </div>
-    <%- include('partials/favorite', {product, product}) %>
-    <%- include('partials/unfavorite', {product, product}) %>
+      <%- include('partials/favorite', {product, product}) %>
+      <%- include('partials/unfavorite', {product, product}) %>
+
+<% } %>
   </main>
 
     <%- include('partials/footer') %>

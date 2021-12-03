@@ -54,6 +54,7 @@ module.exports = (db) => {
     const user_email = req.session.user_email;
     const is_admin = req.session.is_admin;
     const product_id = req.params.product_id
+    if (user_email) {
   const value = [receiver_id, user_id]
   const sqlQuery = `
       SELECT m.*, us.name as sender_name, ur.name as receiver_name
@@ -84,6 +85,9 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       })
+    } else {
+      res.send("Sorry, you must be logged in to contact a seller.");
+    }
     })
 
   //post route to send messages to other users//
@@ -113,6 +117,7 @@ module.exports = (db) => {
       const user_email = req.session.user_email;
       const is_admin = req.session.is_admin;
       const value = [receiver_id, user_id];
+      if (user_email) {
       const sqlQuery = `
       SELECT m.*, us.name as sender_name, ur.name as receiver_name
       FROM messages m
@@ -131,6 +136,9 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       })
+    } else {
+      res.send("Sorry, you must be logged in to contact the Admin.");
+    }
     })
 
     //post route to send messages from users to admins//
