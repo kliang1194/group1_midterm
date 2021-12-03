@@ -29,28 +29,6 @@ $(document).ready(function() {
       closeNav();
     });
 
-    // $('#minprice').on('keyup change', function() {
-    //   if ($('#minprice').val() || $('#maxprice').val()) {
-    //      $('#filter-btn').removeAttr('disabled');
-    //   } else {
-    //     $("#filter-btn").attr("disabled", true);
-    //   }
-    // });
-
-    // $('#maxprice').on('keyup change', function() {
-    //   if ($('#minprice').val() || $('#maxprice').val()) {
-    //      $('#filter-btn').removeAttr('disabled');
-    //   } else {
-    //     $("#filter-btn").attr("disabled", true);
-    //   }
-    // });
-
-    // $("#filter-btn").submit(function(event) {
-    //   event.preventDefault();
-    //   console.log('minprice: ' + $('#minprice').val());
-    //   console.log('maxprice: ' + $('#maxprice').val())
-    // });
-
   });
 
   const checkValidFilter = function(minprice, maxprice) {
