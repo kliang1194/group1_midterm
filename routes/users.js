@@ -52,7 +52,7 @@ router.post("/login", (req, res) => {
         req.session.is_admin = user.is_admin;
         req.session.user_id = user.id;
         req.session.user_name = user.name;
-        res.redirect("/login");
+        res.redirect("/");
       } else {
         res.send("Your login information does not match our records. Please try again.");
       }

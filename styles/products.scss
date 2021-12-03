@@ -25,7 +25,7 @@ div.product-content {
   justify-content: space-between;
   width: 50%;
   background-color: #6eb2d9;
-  padding: 10px;
+  padding: 20px;
   border-radius: 15px;
   margin-bottom: 20px;
 }
@@ -44,7 +44,8 @@ div.product-content {
 
 .button-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 
 #product-page-grid {
@@ -58,9 +59,9 @@ form.contact-seller-button {
   margin-top: 10px;
 }
 
-#product_image {
-  width: 500px;
-  height: 400px;
+img.product-image {
+  height: 200px;
+  width: 265px;
 }
 
 /* The sidepanel menu */

@@ -26,29 +26,32 @@
   <%- include('partials/header') %>
 
   <header class='header'>
-    <h1>My Favorites</h1>
+    <h1 id="products">My Favorites</h1>
   </header>
+
 
   <main id='products-container'>
     <% for(let product of products) { %>
-    <article id="product-<%= product['product_id'] %>" class="product">
-      <div class="image-content">
-        <img src="<%= product['image_url'] %>" width="200" height="200">
-      </div>
-
+    <article id="product-<%= product['id'] %>" class="product">
       <div class="product-content">
         <div class="description-section">
+          <div class="description-information">
           <h3><%= product['name'] %></h3>
           <p><%= product['description'] %></p>
+          <p>$<%= product['price'] %></p>
+        </div>
+          <div class="image-content">
+            <img src="<%= product['image_url'] %>" width="200" height="200" class="product-image">
+          </div>
         </div>
         <div class="button-section">
-          <form method="GET" action="/products/<%= product['product_id'] %>">
+          <form method="GET" action="/products/<%= product['id'] %>">
             <button type="submit" class="btn btn-primary">More Info</button>
           </form>
           <form id="unfavorite-button-<%= product['product_id'] %>" method="POST" action="/products/<%= product['product_id'] %>/<%= user_id %>/unFavorite">
             <button type="submit" class="btn btn-danger">Unfavorite This</button>
           </form>
-          <form method="GET" action="/newMessage/<%= product['product_id'] %>/<%=product['seller_id']%>">
+          <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>" target="_blank">
             <button type="submit" class="btn btn-primary">Contact Seller</button>
           </form>
         </div>
