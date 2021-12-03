@@ -43,7 +43,7 @@ module.exports = (db) => {
 
   router.post("/newProducts", (req, res) => {
     const name = req.body.name;
-    const price = req.body.price * 100;
+    const price = req.body.price;
     const brand = req.body.brand;
     const screenSize = req.body.screen_size;
     const color = req.body.color;
@@ -149,8 +149,7 @@ module.exports = (db) => {
         return;
       })
       .catch(err => {
-        res
-          .status(500)
+        res.status(500)
           .json({ error: err.message });
       });
   });

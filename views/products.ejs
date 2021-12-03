@@ -26,7 +26,7 @@
   <%- include('partials/header') %>
 
   <header class='header'>
-    <h1>Products</h1>
+    <h1 id="products">Products</h1>
   </header>
 
   <%- include('partials/filter_sidebar') %>
@@ -34,14 +34,16 @@
   <main id='products-container'>
     <% for(let product of products) { %>
     <article id="product-<%= product['id'] %>" class="product">
-      <div class="image-content">
-        <img src="<%= product['image_url'] %>" width="200" height="200">
-      </div>
-
       <div class="product-content">
         <div class="description-section">
+          <div class="description-information">
           <h3><%= product['name'] %></h3>
           <p><%= product['description'] %></p>
+          <p>$<%= product['price'] %></p>
+        </div>
+          <div class="image-content">
+            <img src="<%= product['image_url'] %>" class="product-image">
+          </div>
         </div>
         <div class="button-section">
           <form method="GET" action="/products/<%= product['id'] %>">
@@ -49,7 +51,7 @@
           </form>
           <%- include('partials/favorite', {product, product}) %>
           <%- include('partials/unfavorite', {product, product}) %>
-          <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>">
+          <form method="GET" action="/newMessage/<%=product['id']%>/<%=product['seller_id']%>" target="_blank">
             <button type="submit" class="btn btn-primary">Contact Seller</button>
           </form>
         </div>
