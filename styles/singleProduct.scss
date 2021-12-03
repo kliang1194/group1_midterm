@@ -6,8 +6,8 @@ div#single-product-description {
 }
 
 img#single_product_image {
-  max-height: 400px;
-  max-width: 400px;
+  height: 300px;
+  width: 400px;
 }
 
 div#single-product-container {
@@ -15,10 +15,11 @@ div#single-product-container {
   padding: 30px;
   background-color: white;
   border-radius: 40px;
+  height: 500px;
 }
 
 div#single-page-description {
-  width: 300px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
