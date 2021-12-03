@@ -12,7 +12,10 @@ module.exports = (db) => {
       return res.redirect("/admin/products");
     }
 
-    db.query(`SELECT * FROM products;`)
+    db.query(`SELECT products.*, users.name as seller_name
+    FROM products
+    INNER JOIN users ON seller_id = users.id
+    ORDER BY products.id DESC;`)
       .then((data) => {
         if (user_id === undefined) {
           user_id = 'undefined';

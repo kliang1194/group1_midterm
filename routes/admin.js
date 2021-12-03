@@ -11,7 +11,10 @@ module.exports = (db) => {
       return res.status(401).send("No authorization for admin functionality! (Admin page)");
     };
 
-    db.query(`SELECT * FROM products;`)
+    db.query(`SELECT products.*, users.name as seller_name
+    FROM products
+    INNER JOIN users ON seller_id = users.id
+    ORDER BY products.id DESC;`)
       .then(data => {
         const products = data.rows;
         const templateVars = {is_admin, user_email, products, user_id};

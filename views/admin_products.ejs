@@ -42,9 +42,12 @@
       <div class="product-content">
         <div class="description-section">
           <div class="description-information">
-          <h3><%= product['name'] %></h3>
-          <p><%= product['description'] %></p>
-          <p>$<%= product['price'] %></p>
+            <h3><%= product['name'] %></h3>
+            <p><b>Description: </b><%= product['description'] %></p>
+            <p><b>Price: $</b><%= product['price'] %></p>
+            <p><b>Seller Name: </b><%= product['seller_name'] %></p>
+            <p><b>Seller ID: </b><%= product['seller_id'] %></p>
+            <p><b>Product ID: </b><%= product['id'] %></p>
         </div>
           <div class="image-content">
             <img src="<%= product['image_url'] %>" width="200" height="200" class="product-image">

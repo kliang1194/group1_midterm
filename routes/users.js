@@ -110,7 +110,7 @@ router.post("/register", (req, res) => {
 //deleting user session once user logs out
 router.post("/logout", (req, res) => {
   req.session = null;
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 
